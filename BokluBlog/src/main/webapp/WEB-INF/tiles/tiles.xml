@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+       
+  <!-- ###################Admin Section Starts From Here######################################### --> 
+       
+  <tiles-definitions>
+    <definition name="adminLogin" template="/WEB-INF/views/layout/loginLayout.jsp">       
+        <put-attribute name="body" value="/WEB-INF/views/Login/adminLogin.jsp" />    
+    </definition>  
+
+    <definition name="admin.definition" template="/WEB-INF/views/layout/adminLayout.jsp">    
+        <put-attribute name="header" value="/WEB-INF/views/SidePartsOfBody/header.jsp"/>  
+        <put-attribute name="sideMenu" value="/WEB-INF/views/SidePartsOfBody/sideMenu.jsp" />   
+        <put-attribute name="body" value="" />  
+        <put-attribute name="footer" value="/WEB-INF/views/SidePartsOfBody/footer.jsp" />  
+    </definition>
+    
+    <definition name="dashboard" extends="admin.definition">       
+        <put-attribute name="body" value="/WEB-INF/views/body/admin/dashboard.jsp" />  
+    </definition>
+    
+    <definition name="headerLinksTable" extends="admin.definition">       
+        <put-attribute name="body" value="/WEB-INF/views/body/admin/headerLinksTable.jsp" />  
+    </definition>
+    
+    <definition name="addHeaderLinks" extends="admin.definition">       
+        <put-attribute name="body" value="/WEB-INF/views/body/admin/addHeaderLinks.jsp" />  
+    </definition>
+     
+    
+  <!-- ###################Admin Section ENDS Here############################################### --> 
+  
+  <!-- ###################User Section Starts From Here######################################### -->
+  
+  <definition name="user.definition" template="/WEB-INF/views/layout/userLayout.jsp">
+    <put-attribute name="searchHeader" value="/WEB-INF/views/body/user/SearchHeaderBar/SearchHeaderBar.jsp"/>
+    <put-attribute name="body" value=""/>
+    <put-attribute name="footer" value="/WEB-INF/views/SidePartsOfBody/footer.jsp"></put-attribute>
+  </definition>
+  
+  <definition name="boklu" extends="user.definition">       
+        <put-attribute name="body" value="/WEB-INF/views/body/user/body/boklu.jsp" />    
+    </definition>  
+    
+      <definition name="userLogin" template="/WEB-INF/views/layout/loginLayout.jsp">       
+        <put-attribute name="body" value="/WEB-INF/views/Login/userLogin.jsp" />    
+    </definition>
+    
+     <definition name="registration" template="/WEB-INF/views/layout/loginLayout.jsp">       
+        <put-attribute name="body" value="/WEB-INF/views/body/user/registration/registration.jsp" />    
+    </definition>  
+    
+    <definition name="forgotPassword" template="/WEB-INF/views/layout/loginLayout.jsp">       
+        <put-attribute name="body" value="/WEB-INF/views/body/user/forgotPassword/forgotPassword.jsp" />    
+    </definition>
+    
+    <definition name="resetPassword" template="/WEB-INF/views/layout/loginLayout.jsp">       
+        <put-attribute name="body" value="/WEB-INF/views/body/user/forgotPassword/forgotResetPassword.jsp" />    
+    </definition>  
+  
+  <!-- ###################User Section ENDS Here################################################ --> 
+
+
+</tiles-definitions>

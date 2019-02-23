@@ -1,0 +1,22 @@
+/* This css file is only common css Class */
+
+.error{
+	color:red;
+}
+
+.borderColor {
+	border:1px solid black;
+}
+
+.link {
+	color:#0000FF;
+}
+
+.margin-top-6 {
+	margin-top :6rem !important
+}
+
+ul.dropdown-menu {
+	right:0;
+	left:auto;
+}
