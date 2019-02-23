@@ -7,7 +7,7 @@ var ParFw = function() {
 	}
 	
 	var selectMenuHiddenProperty = function() {
-	/*	$(".ui-selectmenu-button-text").css("display","none");*/
+		$(".ui-selectmenu-button-text").css("display","none");
 	}
 	
 	var selectMenuAdditionalClassHidden = function () {

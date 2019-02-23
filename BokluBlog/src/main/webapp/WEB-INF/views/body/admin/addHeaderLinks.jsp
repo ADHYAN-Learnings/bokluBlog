@@ -22,11 +22,11 @@
            </div>
           
            <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6">
-          <%--   <div class="form-group">
+            <div class="form-group">
              <form:label class="control-label" path="path">Enter the Path</form:label>
              <form:input path="path" maxlength="50" class="form-control"/>
              <form:errors path="path" cssClass="error"></form:errors> 
-          </div> --%>
+          </div> 
            
           </div>
            </div>

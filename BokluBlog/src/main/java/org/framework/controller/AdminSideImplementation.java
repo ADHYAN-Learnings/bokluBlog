@@ -1,14 +1,13 @@
 package org.framework.controller;
 
-import javax.servlet.http.HttpServletRequest;
+
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.framework.adminService.InterfHeaderLink;
 import org.framework.model.HeaderLink;
-import org.framework.model.OnRegistrationCompleteEvent;
-import org.framework.model.UserRegistration;
 import org.framework.select.FormSelect;
-import org.framework.validation.EmailExistException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +15,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 @Controller
 @RequestMapping("/admin")
@@ -31,7 +32,7 @@ private static final Logger logger = LoggerFactory.getLogger(AdminSideImplementa
    private FormSelect formSelect;
    
    @Autowired
-   private InterfHeaderLink headerLink;
+   private InterfHeaderLink interfHeaderLink;
 	
 	@RequestMapping(value="/dashboard",method=RequestMethod.GET)
 	public String getLandingPage() {
@@ -56,18 +57,16 @@ private static final Logger logger = LoggerFactory.getLogger(AdminSideImplementa
 	
 	
 	@RequestMapping(value="/saveHeaderLink",method=RequestMethod.POST) 
-	public ModelAndView getSaveHeaderLink(@Valid final HeaderLink headerLinkBean ,final BindingResult result, 
+	public ModelAndView getSaveHeaderLink(@ModelAttribute("headerData") @Valid  HeaderLink headerLink , BindingResult result, 
 			final RedirectAttributes redirectAttributes,Model model) { 
-	   logger.debug("::::AdminSideImplementation::::getSaveHeaderLink::");
-	  if(result.hasErrors()) {
-	  logger.debug("You are inside result.hasError:::"+headerLinkBean.getCategory());
-	  
+	   logger.debug("::::AdminSideImplementation::::getSaveHeaderLink::"+headerLink.toString());
+	  if(result.hasErrors()) { 
 	  model.addAttribute("statusSelect", formSelect.statusSelectTag());
 	  model.addAttribute("sequenceSelect", formSelect.sequenceSelectTag()); 
 	  
-	  return new ModelAndView("addHeaderLinks","headerData",headerLinkBean); 
+	  return new ModelAndView("addHeaderLinks","headerData",headerLink); 
 	  }
-	  headerLink.saveHeaderLink(headerLinkBean); 
+	  interfHeaderLink.saveHeaderLink(headerLink); 
 	  return new ModelAndView("redirect:/admin/headerLinks");
 	   }
 	

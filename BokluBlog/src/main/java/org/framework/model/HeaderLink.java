@@ -16,6 +16,7 @@ public class HeaderLink {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="HEADER_LINK_ID",nullable=false,unique=true)
 	private Long id;
 	
 	@NotEmpty(message="Category is Required.")
@@ -30,7 +31,6 @@ public class HeaderLink {
 	private String status;
 	
 	@NotNull
-	/* @Min(1) */
 	@Column(name="sequence")
 	private int sequence;
 
