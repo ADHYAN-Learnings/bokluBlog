@@ -12,6 +12,12 @@
      <sec:authorize var="isUser" access="hasRole('ROLE_USER')" />
    
     <ul class="nav navbar-nav">
+     <c:forEach var="headerLink" items="${result }">
+       <li class="nav-item">
+        <a class="nav-link whiteText" href="#"><c:out value="${headerLink.category }"></c:out></a>
+       </li>
+     </c:forEach>
+      
       <li class="dropdown">
         <a class="dropdown-toggle  whiteText" data-toggle="dropdown" href="#">
          <c:if test="${!isUser}">Sign In</c:if>

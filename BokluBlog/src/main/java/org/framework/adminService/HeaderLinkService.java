@@ -5,6 +5,9 @@ import org.framework.persistence.HeaderLinkRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -20,6 +23,11 @@ public class HeaderLinkService implements InterfHeaderLink {
 	@Override
 	public HeaderLink saveHeaderLink(HeaderLink headerLink) {
 		return headerLinkRepository.save(headerLink);
+	}
+
+	@Override
+	public List<HeaderLink> getHeaderLinkOrderBySequence(String status) {
+		return headerLinkRepository.findBystatusEqualsOrderBySequenceAsc(status);
 	}
 
 	

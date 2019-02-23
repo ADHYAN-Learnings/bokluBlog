@@ -1,13 +1,16 @@
 package org.framework.controller;
 
 import java.util.Calendar;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.frameword.functionalInterface.AccessUsername;
+import org.framework.adminService.InterfHeaderLink;
 import org.framework.email.PasswordResetEmail;
+import org.framework.model.HeaderLink;
 import org.framework.model.OnRegistrationCompleteEvent;
 import org.framework.model.PasswordReset;
 import org.framework.model.PasswordResetToken;
@@ -57,10 +60,17 @@ public class UserSideImplementation {
 	@Autowired
 	private AccessUsername accessUsername;
 	
+	@Autowired
+	private InterfHeaderLink interfHeaderLink;
+	
+	
+	
    @RequestMapping(value="/landingPage")
    public String getLandingPage(Model model) {
 	   logger.debug(":::::UserSideImplementation::::getLandingPage:");
+	   List<HeaderLink> headerLinkData = interfHeaderLink.getHeaderLinkOrderBySequence("Active");
 	   model.addAttribute("username",accessUsername.getUsername());
+	   model.addAttribute("headerLinkData", headerLinkData);
 	   return "boklu";
    }
 	
