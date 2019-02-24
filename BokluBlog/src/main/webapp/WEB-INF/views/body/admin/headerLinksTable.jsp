@@ -19,19 +19,24 @@
        <table id="table" class="display" style="width:100%">
          <thead>
          <tr>
-          <th>Action</th>
+          <th>Action </th>
           <th>Categories</th>
+          <th>Path</th>
           <th>Status</th>
           <th>Sequence</th>
          </tr>
          </thead>
+         
          <tbody>
+         <c:forEach var="headerLinkDetails" items="${headerLinkDetails}">
            <tr>
-             <td>0</td>
-             <td>1</td>
-             <td>2</td>
-             <td>3</td>
+             <td><span><a href="<spring:url value='/admin/edit/${headerLinkDetails.id }'/>"><i class="fa fa-pencil-alt" aria-hidden="true"></i></a></span></td>
+             <td>${headerLinkDetails.category }</td>
+             <td>${headerLinkDetails.path }</td>
+             <td>${headerLinkDetails.status }</td>
+             <td>${headerLinkDetails.sequence }</td>
            </tr>
+           </c:forEach>
          </tbody>
        </table>
      </div>

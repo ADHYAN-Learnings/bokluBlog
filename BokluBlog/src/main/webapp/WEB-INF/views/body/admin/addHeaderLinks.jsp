@@ -8,7 +8,8 @@
      <div class="card">
        <div class="card-header bg-info">Add Header Link</div>
        <div class="card-body">
-         <c:url var="adminHeaderLinkData" value="/admin/saveHeaderLink" />
+       
+        <c:url var="adminHeaderLinkData" value="/admin/saveHeaderLink" />
          <form:form action="${adminHeaderLinkData }" method="POST"  modelAttribute="headerData">
          <form:errors path="*" cssClass="error" />
            <div class="row">

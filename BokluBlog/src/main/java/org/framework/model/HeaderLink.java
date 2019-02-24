@@ -9,9 +9,11 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Min;
+import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
 @Table(name="Header_Link")
+@DynamicUpdate
 public class HeaderLink {
 	
 	@Id
@@ -24,7 +26,7 @@ public class HeaderLink {
 	private String category;
 	
 	@NotEmpty(message="Path is Required.")
-	@Column(unique=true,name="Path")
+	@Column(name="Path")
 	private String path;
 	
 	@Column(name="Status")

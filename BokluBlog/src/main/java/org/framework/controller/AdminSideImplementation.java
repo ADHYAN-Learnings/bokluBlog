@@ -2,7 +2,6 @@ package org.framework.controller;
 
 
 import javax.validation.Valid;
-
 import org.framework.adminService.InterfHeaderLink;
 import org.framework.model.HeaderLink;
 import org.framework.select.FormSelect;
@@ -17,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 @RequestMapping("/admin")
@@ -37,8 +37,9 @@ private static final Logger logger = LoggerFactory.getLogger(AdminSideImplementa
 	}
 	
 	@RequestMapping(value="/headerLinks",method=RequestMethod.GET)
-	public String getHeaderLinksTable() {
+	public String getHeaderLinksTable(Model model) {
 	logger.debug("::AdminSideImplementation:::getHeaderLinksTable:::");
+	 model.addAttribute("headerLinkDetails", interfHeaderLink.getHeaderLinkDetails());
 		return "headerLinksTable";
 	}
 	
@@ -53,7 +54,7 @@ private static final Logger logger = LoggerFactory.getLogger(AdminSideImplementa
 	
 	
 	@RequestMapping(value="/saveHeaderLink",method=RequestMethod.POST) 
-	public ModelAndView getSaveHeaderLink(@ModelAttribute("headerData") @Valid  HeaderLink headerLink , BindingResult result, 
+	public ModelAndView getSaveHeaderLink(@ModelAttribute("headerData") @Valid HeaderLink headerLink , BindingResult result, 
 			final RedirectAttributes redirectAttributes,Model model) { 
 	   logger.debug("::::AdminSideImplementation::::getSaveHeaderLink::"+headerLink.toString());
 	  if(result.hasErrors()) { 
@@ -65,5 +66,12 @@ private static final Logger logger = LoggerFactory.getLogger(AdminSideImplementa
 	  interfHeaderLink.saveHeaderLink(headerLink); 
 	  return new ModelAndView("redirect:/admin/headerLinks");
 	   }
+	
+	 @RequestMapping(value="/edit/{id}",method=RequestMethod.GET)
+	  public ModelAndView editHeaderLinkDetails(@PathVariable(value="id") Long id,Model model) {
+		  model.addAttribute("statusSelect", formSelect.statusSelectTag());
+		  model.addAttribute("sequenceSelect", formSelect.sequenceSelectTag());
+		 return new ModelAndView("addHeaderLinks","headerData", interfHeaderLink.getHeaderLinkById(id));
+	  }
 	
 }
