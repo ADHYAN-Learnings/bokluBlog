@@ -8,6 +8,16 @@
      <div class="card">
        <div class="card-header bg-info">Add Header Link</div>
        <div class="card-body">
+       <c:set var="headerDataId" value="${headerData.id}"/>
+       
+       <c:choose>
+         <c:when test="${headerDataId ne null }">
+          <c:set var="load" value="update"/>
+         </c:when>
+         <c:otherwise>
+          <c:set var="load" value="save"/>
+         </c:otherwise>
+       </c:choose>
        
         <c:url var="adminHeaderLinkData" value="/admin/saveHeaderLink" />
          <form:form action="${adminHeaderLinkData }" method="POST"  modelAttribute="headerData">
@@ -58,8 +68,11 @@
            
             <div class="col-sm-2 col-md-2 col-lg-2 col-xs-2 offset-sm-10 offset-md-10 offset-lg-10 offset-xs-10" >
              <div class="form-group">
-             <button class="btn btn-primary btn-block" type="submit">Load</button>
+             <button class="btn btn-primary btn-block" type="submit"><c:out value="${load }"></c:out></button>
             </div>
+             <c:if test="${headerDataId ne null}">
+               <form:hidden path="id"/>
+             </c:if>
             </div>
            </div>
          

@@ -7,7 +7,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +36,8 @@ public class HeaderLinkService implements InterfHeaderLink {
 	}
 
 	@Override
-	public Optional<HeaderLink> getHeaderLinkById(Long id) {
-		return headerLinkRepository.findById(id);
+	public HeaderLink getHeaderLinkById(Long id) {
+		return headerLinkRepository.getOne(id);
 	}
 
 	
