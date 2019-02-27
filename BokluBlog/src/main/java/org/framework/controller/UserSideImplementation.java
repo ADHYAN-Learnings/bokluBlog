@@ -10,12 +10,14 @@ import javax.validation.Valid;
 import org.frameword.functionalInterface.AccessUsername;
 import org.framework.adminService.InterfHeaderLink;
 import org.framework.email.PasswordResetEmail;
+import org.framework.model.Comments;
 import org.framework.model.HeaderLink;
 import org.framework.model.OnRegistrationCompleteEvent;
 import org.framework.model.PasswordReset;
 import org.framework.model.PasswordResetToken;
 import org.framework.model.UserRegistration;
 import org.framework.model.VerficationToken;
+import org.framework.service.InterfPostCommentService;
 import org.framework.service.InterfUserService;
 import org.framework.validation.EmailExistException;
 import org.slf4j.Logger;
@@ -32,6 +34,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -62,6 +65,9 @@ public class UserSideImplementation {
 	
 	@Autowired
 	private InterfHeaderLink interfHeaderLink;
+	
+	@Autowired
+	private InterfPostCommentService interfPostCommentService;
 	
 	
 	
@@ -207,6 +213,30 @@ public class UserSideImplementation {
 	    logger.debug("::UserSideImplementation::getDirectAccessResetPassword::");
 			return "resetPassword";
 		}
+	  
+	  @RequestMapping(value="/searchHeader/{searchHeaderLink}")
+	  public ModelAndView getSearchHeaderValue(@PathVariable(value="searchHeaderLink") String searchHeaderLink, 
+		     Model model , HeaderLink headerLink, Comments comments) {
+			 
+	   if(searchHeaderLink.equalsIgnoreCase("spring_security")) {
+		List<HeaderLink> headerLinkWithSequence = interfHeaderLink.getHeaderLinkOrderBySequence("Active");
+		model.addAttribute("headerLinkWithSequence",headerLinkWithSequence); 
+		comments.setHeaderLink(interfHeaderLink.getHeaderLinkByPath(searchHeaderLink));
+		return new ModelAndView("boklu","postComment",comments);
+	     }	 
+		return new ModelAndView("ConstructionPage","constructionPage",comments);
+		}
+		 
+	   @RequestMapping(value="/saveComment",method=RequestMethod.POST)
+	   public ModelAndView saveComment(@Valid Comments comments , BindingResult result , Model model) {
+			 
+		if(result.hasErrors()) {
+			return new ModelAndView("boklu","postComment",comments);
+		}
+		
+	    interfPostCommentService.saveComments(comments);
+		    return new ModelAndView("redirect:/boklu/searchHeader/"+comments.getHeaderLink().getPath());
+	    }
    
 
 }

@@ -68,8 +68,8 @@
            
             <div class="col-sm-2 col-md-2 col-lg-2 col-xs-2 offset-sm-10 offset-md-10 offset-lg-10 offset-xs-10" >
              <div class="form-group">
-             <button class="btn btn-primary btn-block" type="submit"><c:out value="${load }"></c:out></button>
-            </div>
+              <button class="btn btn-primary btn-block" type="submit"><c:out value="${load }"></c:out></button>
+             </div>
              <c:if test="${headerDataId ne null}">
                <form:hidden path="id"/>
              </c:if>

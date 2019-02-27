@@ -38,5 +38,6 @@ public class ApplicationConfiguration implements WebMvcConfigurer {
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/CustomCss/**").addResourceLocations("/resources/CustomCss/");
 		registry.addResourceHandler("/CustomJs/**").addResourceLocations("/resources/CustomJs/");
+		registry.addResourceHandler("/images/**").addResourceLocations("/resources/images/");
 	}
 }

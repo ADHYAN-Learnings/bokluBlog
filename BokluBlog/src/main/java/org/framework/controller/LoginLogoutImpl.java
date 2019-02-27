@@ -3,6 +3,7 @@ package org.framework.controller;
 import java.util.List;
 
 import org.framework.adminService.InterfHeaderLink;
+import org.framework.model.Comments;
 import org.framework.model.HeaderLink;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,8 +29,9 @@ public class LoginLogoutImpl {
 	public String getStore(Model model) {
 	logger.debug(":::LoginLogoutImpl:::getStore:::");
 	
-	List<HeaderLink> result = interfHeaderLink.getHeaderLinkOrderBySequence("Active");
-    model.addAttribute("result",result); 
+	List<HeaderLink> headerLinkWithSequence = interfHeaderLink.getHeaderLinkOrderBySequence("Active");
+    model.addAttribute("headerLinkWithSequence",headerLinkWithSequence); 
+    model.addAttribute("postComment",new Comments());
 		return "boklu";
 	}
 	

@@ -85,7 +85,8 @@ public class MultipleSecurityConfiguration {
 			    .authorizeRequests()
 			    .antMatchers("/boklu","/boklu/signup","/boklu/register","/boklu/registrationConfirmation",
 			    		"/boklu/forgotPassword","/boklu/passwordReset",
-			    		"/boklu/resetChangePassword","/boklu/savePasswordReset").permitAll()
+			    		"/boklu/resetChangePassword","/boklu/savePasswordReset",
+			    		"/boklu/searchHeader/**","/boklu/saveComment").permitAll()
 			    .anyRequest().hasRole("USER")
 			 
 			    .and()

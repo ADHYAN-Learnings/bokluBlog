@@ -12,9 +12,9 @@
      <sec:authorize var="isUser" access="hasRole('ROLE_USER')" />
    
     <ul class="nav navbar-nav">
-     <c:forEach var="headerLink" items="${result }">
+     <c:forEach var="headerLink" items="${headerLinkWithSequence }">
        <li class="nav-item">
-        <a class="nav-link whiteText" href="#"><c:out value="${headerLink.category }"></c:out></a>
+        <a class="nav-link whiteText" href="/boklu/searchHeader/${headerLink.path }"><c:out value="${headerLink.category }"></c:out></a>
        </li>
      </c:forEach>
       

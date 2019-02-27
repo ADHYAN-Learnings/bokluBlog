@@ -40,6 +40,11 @@ public class HeaderLinkService implements InterfHeaderLink {
 		return headerLinkRepository.getOne(id);
 	}
 
+	@Override
+	public HeaderLink getHeaderLinkByPath(String path) {
+		return headerLinkRepository.findByPath(path);
+	}
+
 	
 
 }

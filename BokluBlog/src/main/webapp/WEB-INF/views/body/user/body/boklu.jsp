@@ -1,4 +1,9 @@
-     <p>Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko.</p> 
+ <html>
+   <body>
+      <div class="container-fluid margin-top-6">
+        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 offset-xs-2 offset-sm-2 offset-md-2 offset-lg-2 bg-light">
+         
+<p>Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko.</p> 
 <p>He first appeared in the anthology comic book Amazing Fantasy #15 (August 1962) in the Silver Age of Comic Books.</p>
 <p> He appears in American comic books published by Marvel Comics, as well as in a number of movies, television shows,</p>
 <p> and video game adaptations set in the Marvel Universe. In the stories, Spider-Man is the alias of Peter Parker,</p>
@@ -53,3 +58,10 @@
 <p> Green Goblin and Venom. His origin story has him acquiring spider-related abilities after a bite from a radioactive spider; these include clinging to surfaces,</p>
 <p> shooting spider-webs from wrist-mounted devices, and detecting danger with his "spider-sense</p>
 
+          
+         
+        </div>
+      </div>
+   </body>
+ </html>
+ 
