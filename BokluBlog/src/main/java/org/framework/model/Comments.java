@@ -11,7 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name="Post_Comment")
@@ -19,25 +19,35 @@ public class Comments {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="COMMENT_ID",nullable=false,unique=true)
-	private Long Id;
+	@Column(name="COMMENT_ID")
+	private Long id;
 	
+	@NotEmpty(message="Comment should not be empty.")
 	@Column(name="Comment")
-	@NotNull(message="Comment should not be empty.")
 	private String comment;
 	
-	@Column(name="Email")
-	@NotNull(message="Email is Required.")
 	@Email
+	@NotEmpty(message="Email is Required.")
+	@Column(name="Email")
 	private String email;
 	
+	@NotEmpty(message="Name is Required.")
 	@Column(name="Name")
-	@NotNull(message="Name is Required.")
 	private String name;
 	
 	@ManyToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "HeaderLink_Post_Id", nullable = false)
 	private HeaderLink headerLink;
+	
+	
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getComment() {
 		return comment;
@@ -73,7 +83,8 @@ public class Comments {
 
 	@Override
 	public String toString() {
-		return "Comments [comment=" + comment + ", email=" + email + ", name=" + name + ", headerLink=" + headerLink
-				+ "]";
+		return "Comments [id=" + id + ", comment=" + comment + ", email=" + email + ", name=" + name + ", headerLink="
+				+ headerLink + "]";
 	}
+	
 }

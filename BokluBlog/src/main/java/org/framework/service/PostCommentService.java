@@ -1,5 +1,7 @@
 package org.framework.service;
 
+import java.util.List;
+
 import org.framework.model.Comments;
 import org.framework.persistence.PostCommentRepository;
 import org.springframework.stereotype.Service;
@@ -17,5 +19,11 @@ public class PostCommentService implements InterfPostCommentService {
 	public Comments saveComments(Comments comments) {
 		return postCommentRepository.save(comments);
 	}
+
+	@Override
+	public List<Comments> getCommentBySequence() {
+		return postCommentRepository.findAllByOrderByIdDesc();
+	}
+
 
 }

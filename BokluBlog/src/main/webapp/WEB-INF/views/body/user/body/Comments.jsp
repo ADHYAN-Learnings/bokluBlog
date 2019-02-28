@@ -48,6 +48,20 @@
               </div>
               </div>
              </div>
+             <div class="card-footer">
+               <c:forEach var="displayComments" items="${displayComments }">
+                 <div class="row mb-2">
+                 <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                   <img src="<spring:url value='/images/user-image.png'/>" alt="Image Preview not Available" class="img-fluid img-square" style="width:70%">
+                 </div>
+                 <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 ">
+                  <p><span><c:out value="${displayComments.name}"></c:out></span></p>
+                  <p><span><c:out value="${displayComments.comment}"></c:out></span></p>
+                  </div>
+               </div>
+            
+               </c:forEach>
+             </div>
             </div>    
           </div>
         </div>

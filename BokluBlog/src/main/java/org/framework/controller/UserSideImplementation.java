@@ -34,6 +34,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -219,8 +220,12 @@ public class UserSideImplementation {
 		     Model model , HeaderLink headerLink, Comments comments) {
 			 
 	   if(searchHeaderLink.equalsIgnoreCase("spring_security")) {
+		   
 		List<HeaderLink> headerLinkWithSequence = interfHeaderLink.getHeaderLinkOrderBySequence("Active");
-		model.addAttribute("headerLinkWithSequence",headerLinkWithSequence); 
+		model.addAttribute("headerLinkWithSequence",headerLinkWithSequence);
+		List<Comments> displayComments = interfPostCommentService.getCommentBySequence();
+		model.addAttribute("displayComments", displayComments);
+		
 		comments.setHeaderLink(interfHeaderLink.getHeaderLinkByPath(searchHeaderLink));
 		return new ModelAndView("boklu","postComment",comments);
 	     }	 
@@ -228,9 +233,14 @@ public class UserSideImplementation {
 		}
 		 
 	   @RequestMapping(value="/saveComment",method=RequestMethod.POST)
-	   public ModelAndView saveComment(@Valid Comments comments , BindingResult result , Model model) {
-			 
+	   public ModelAndView saveComment(@ModelAttribute("postComment") @Valid  final Comments comments ,final BindingResult result , Model model) {
+		logger.debug(":::UserSideImplementation::::::saveComment:::"+comments.toString());
+		
 		if(result.hasErrors()) {
+			List<HeaderLink> headerLinkWithSequence = interfHeaderLink.getHeaderLinkOrderBySequence("Active");
+			model.addAttribute("headerLinkWithSequence",headerLinkWithSequence);
+			List<Comments> displayComments = interfPostCommentService.getCommentBySequence();
+			model.addAttribute("displayComments", displayComments);
 			return new ModelAndView("boklu","postComment",comments);
 		}
 		
