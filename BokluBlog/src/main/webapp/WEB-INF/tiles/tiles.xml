@@ -37,8 +37,15 @@
   <definition name="user.definition" template="/WEB-INF/views/layout/userLayout.jsp">
     <put-attribute name="searchHeader" value="/WEB-INF/views/body/user/SearchHeaderBar/SearchHeaderBar.jsp"/>
     <put-attribute name="body" value=""/>
+    <put-attribute name="footer" value="/WEB-INF/views/SidePartsOfBody/footer.jsp"></put-attribute>
+  </definition>
+  
+   <definition name="userPage.definition" template="/WEB-INF/views/layout/userLayout.jsp">
+    <put-attribute name="searchHeader" value="/WEB-INF/views/body/user/SearchHeaderBar/SearchHeaderBar.jsp"/>
+    <put-attribute name="body" value=""/>
     <put-attribute name="footer" value="/WEB-INF/views/body/user/body/Comments.jsp"></put-attribute>
   </definition>
+  
   
   <definition name="boklu" extends="user.definition">       
         <put-attribute name="body" value="/WEB-INF/views/body/user/body/boklu.jsp" />    
@@ -58,7 +65,11 @@
     
     <definition name="resetPassword" template="/WEB-INF/views/layout/loginLayout.jsp">       
         <put-attribute name="body" value="/WEB-INF/views/body/user/forgotPassword/forgotResetPassword.jsp" />    
-    </definition>  
+    </definition> 
+    
+     <definition name="springSecurityBasic" extends="userPage.definition">       
+        <put-attribute name="body" value="/WEB-INF/views/body/user/body/SpringSecurity-Basics.jsp" />    
+    </definition> 
   
    <!-- ###################User Section ENDS Here################################################ --> 
   

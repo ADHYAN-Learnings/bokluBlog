@@ -227,7 +227,7 @@ public class UserSideImplementation {
 		model.addAttribute("displayComments", displayComments);
 		
 		comments.setHeaderLink(interfHeaderLink.getHeaderLinkByPath(searchHeaderLink));
-		return new ModelAndView("boklu","postComment",comments);
+		return new ModelAndView("springSecurityBasic","postComment",comments);
 	     }	 
 		return new ModelAndView("ConstructionPage","constructionPage",comments);
 		}
@@ -244,7 +244,7 @@ public class UserSideImplementation {
 			return new ModelAndView("boklu","postComment",comments);
 		}
 		
-	    interfPostCommentService.saveComments(comments);
+	      interfPostCommentService.saveComments(comments);
 		    return new ModelAndView("redirect:/boklu/searchHeader/"+comments.getHeaderLink().getPath());
 	    }
    

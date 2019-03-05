@@ -20,3 +20,7 @@ ul.dropdown-menu {
 	right:0;
 	left:auto;
 }
+
+.underline {
+	text-decoration:underline;
+}
