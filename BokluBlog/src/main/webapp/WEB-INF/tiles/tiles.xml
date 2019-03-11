@@ -28,6 +28,14 @@
     <definition name="addHeaderLinks" extends="admin.definition">       
         <put-attribute name="body" value="/WEB-INF/views/body/admin/addHeaderLinks.jsp" />  
     </definition>
+    
+     <definition name="headerSubSectionTable" extends="admin.definition">       
+        <put-attribute name="body" value="/WEB-INF/views/body/admin/headerSubSectionTable.jsp" />  
+    </definition>
+    
+    <definition name="addHeaderSubSection" extends="admin.definition">       
+        <put-attribute name="body" value="/WEB-INF/views/body/admin/headerSubSection.jsp" />  
+    </definition>
      
     
   <!-- ###################Admin Section ENDS Here############################################### --> 

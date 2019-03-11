@@ -8,7 +8,7 @@
       
         <div class="row mb-5">
           <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 offset-xs-2 offset-sm-2 offset-md-2 offset-lg-2">
-             <h2>Comments</h2>
+            <h2>Comments</h2>
             <div class="card bg-light text-dark">
              <div class="card-body">
               <div class="row">

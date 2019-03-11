@@ -3,6 +3,7 @@ package org.framework.controller;
 
 import javax.validation.Valid;
 import org.framework.adminService.InterfHeaderLink;
+import org.framework.adminService.InterfHeaderSubSection;
 import org.framework.model.HeaderLink;
 import org.framework.select.FormSelect;
 import org.slf4j.Logger;
@@ -17,6 +18,9 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.framework.model.HeaderSubSection;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 @RequestMapping("/admin")
@@ -29,6 +33,9 @@ private static final Logger logger = LoggerFactory.getLogger(AdminSideImplementa
    
    @Autowired
    private InterfHeaderLink interfHeaderLink;
+   
+   @Autowired
+   private InterfHeaderSubSection interfHeaderSubSection;
 	
 	@RequestMapping(value="/dashboard",method=RequestMethod.GET)
 	public String getLandingPage() {
@@ -73,5 +80,42 @@ private static final Logger logger = LoggerFactory.getLogger(AdminSideImplementa
 		  model.addAttribute("sequenceSelect", formSelect.sequenceSelectTag());
 		 return new ModelAndView("addHeaderLinks","headerData", interfHeaderLink.getHeaderLinkById(id));
 	  }
+	 
+	 @GetMapping("/headerLinksSubSection")
+	 public ModelAndView HeaderSubSection(Model model) {		 
+		 return new ModelAndView("headerSubSectionTable","headerSubSectionData",interfHeaderSubSection.getHeaderSubSectionDetails());
+	 }
+	 
+	 @GetMapping("/addSubSection")
+	 public ModelAndView addSubSectionOfHeader(Model model) {
+		 model.addAttribute("headerCategories",formSelect.headerLinkCategories());
+		 model.addAttribute("statusSelect", formSelect.statusSelectTag());
+		 model.addAttribute("sequenceSelect", formSelect.sequenceSelectTag());
+		 return new ModelAndView("addHeaderSubSection","headerSubSectionData", new HeaderSubSection());
+	 }
+	 
+	 @PostMapping("/saveHeaderSubSection")
+	 public ModelAndView addHeaderSubSection(@ModelAttribute("headerSubSectionData") @Valid HeaderSubSection headerSubSection ,  BindingResult result,
+			 final RedirectAttributes redirectAttributes,Model model) {
+		 if(result.hasErrors()) {
+			 model.addAttribute("headerCategories",formSelect.headerLinkCategories());
+			 model.addAttribute("statusSelect", formSelect.statusSelectTag());
+			 model.addAttribute("sequenceSelect", formSelect.sequenceSelectTag());
+			 return new ModelAndView("addHeaderSubSection","headerSubSectionData",headerSubSection);
+			 
+		 }
+		 interfHeaderSubSection.saveHeaderSubSection(headerSubSection);
+		 return new ModelAndView("redirect:/admin/headerLinksSubSection");
+	 }
+	 
+	 @GetMapping("/editHeaderSubSectionData/{subSectionId}")
+	 public ModelAndView editHeaderSubSection(@PathVariable("subSectionId") Long subSectionId , Model model , HeaderSubSection headerSubSection) {
+		 model.addAttribute("headerCategories",formSelect.headerLinkCategories());
+		 model.addAttribute("statusSelect", formSelect.statusSelectTag());
+		 model.addAttribute("sequenceSelect", formSelect.sequenceSelectTag());
+		 return new ModelAndView("addHeaderSubSection","headerSubSectionData", interfHeaderSubSection.findBySubSectionId(subSectionId));
+		 
+	 }
+	 
 	
 }

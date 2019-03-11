@@ -304,7 +304,7 @@ public class AddUserModel {
                    <img src="<spring:url value='/images/SpringSecurity/landingPage.PNG'/>" alt="Image Preview not Available" class="img-fluid img-square">
                    <br/>
                    <br/>
-                   <div>You can download the project from the <a href="#">Github</a>Link</div>
+                   <div>You can download the project from the <a href="https://github.com/boklu-aditya/spring-security-Basics.git">Github</a>Link and the sql file inside resources folder.</div>
                    <br>
                   
         </div>

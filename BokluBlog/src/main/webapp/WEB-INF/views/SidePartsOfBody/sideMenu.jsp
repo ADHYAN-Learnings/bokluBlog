@@ -8,6 +8,7 @@
 <ul id="menuList" class="list-unstyled components">
   <li><a href="<spring:url value='/admin/dashboard'/>">Dashboard</a></li>
   <li><a href="<spring:url value='/admin/headerLinks'/>">HeaderLinks</a></li>
+  <li><a href="<spring:url value='/admin/headerLinksSubSection'/>">Header-SubSection</a></li>
    <li><a href="#">ABOUT</a></li>
    <li>
      <a href="#pageSubMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>

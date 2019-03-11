@@ -16,7 +16,7 @@
        </div>
      </div>
      <div class="card-body">
-       <table id="table" class="display" style="width:100%">
+       <table id="table"  class="display" style="width:100%">
          <thead>
          <tr>
           <th>Action </th>
@@ -30,7 +30,8 @@
          <tbody>
          <c:forEach var="headerLinkDetails" items="${headerLinkDetails}">
            <tr>
-             <td><span><a href="<spring:url value='/admin/edit/${headerLinkDetails.id }'/>"><i class="fa fa-pencil-alt" aria-hidden="true"></i></a></span></td>
+             <td><span><a href="<spring:url value='/admin/edit/${headerLinkDetails.id }'/>">
+              <i class="fa fa-pencil-alt" aria-hidden="true"></i></a></span></td>
              <td>${headerLinkDetails.category }</td>
              <td>${headerLinkDetails.path }</td>
              <td>${headerLinkDetails.status }</td>
