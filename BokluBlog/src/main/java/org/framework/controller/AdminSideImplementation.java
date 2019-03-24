@@ -1,9 +1,13 @@
 package org.framework.controller;
 
 
+
 import javax.validation.Valid;
+
+import org.framework.adminService.InterfBlogService;
 import org.framework.adminService.InterfHeaderLink;
 import org.framework.adminService.InterfHeaderSubSection;
+import org.framework.model.Blog;
 import org.framework.model.HeaderLink;
 import org.framework.select.FormSelect;
 import org.slf4j.Logger;
@@ -36,6 +40,9 @@ private static final Logger logger = LoggerFactory.getLogger(AdminSideImplementa
    
    @Autowired
    private InterfHeaderSubSection interfHeaderSubSection;
+   
+   @Autowired
+   private InterfBlogService interfBlogService;
 	
 	@RequestMapping(value="/dashboard",method=RequestMethod.GET)
 	public String getLandingPage() {
@@ -117,5 +124,37 @@ private static final Logger logger = LoggerFactory.getLogger(AdminSideImplementa
 		 
 	 }
 	 
+	 @GetMapping("/blog")
+	 public ModelAndView blog(Model model,Blog blog) {
+		 return new ModelAndView("blogTable","blogData",interfBlogService.getAllData());
+	 }
+	 
+	 @GetMapping("/addBlog")
+     public ModelAndView addBlog(Model model,Blog blog , BindingResult bindingResult) {
+		 
+		model.addAttribute("headerCategories",formSelect.headerLinkCategories());
+		 return new ModelAndView("addBlog","blogData",blog);
+	 }
+	 
+	 @PostMapping("/saveBlogDetails")
+	 public ModelAndView saveBlogDetails(Model model,Blog blog,BindingResult bindingResult) {
+		 interfBlogService.save(blog);
+		 return new ModelAndView("redirect:/admin/blog");
+	 }
+	 
+	 @PostMapping("/blogTest")
+	 public ModelAndView testBlog(Model model,Blog blog) {
+		 logger.debug(":::::"+blog.getBlogData());
+		 return new ModelAndView("checkBlog","blog",blog);
+	 }
+	 
+	 @GetMapping("/editblog/{blogId}")
+	 public ModelAndView editBlogDetails(@PathVariable("blogId") Long blogId,Model model, Blog blog) {
+		 Blog blogDetails = interfBlogService.findByBlogId(blogId);
+		 model.addAttribute("headerCategories",formSelect.headerLinkCategories());
+		 model.addAttribute("headerSubjectData",formSelect.headerSubject(blogDetails.getHeaderCategory().getId()));		 
+		 return new ModelAndView("addBlog","blogData",blogDetails);
+		 
+	 }
 	
 }

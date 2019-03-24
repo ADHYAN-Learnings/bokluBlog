@@ -1,8 +1,7 @@
- <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
  <html>
-   <body class="bg-light">
+   <body class="">
       <div class="container-fluid margin-top-6">
-        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 offset-xs-2 offset-sm-2 offset-md-2 offset-lg-2 ">
+        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 offset-xs-2 offset-sm-2 offset-md-2 offset-lg-2 bg-light">
          
        <h1>Spring Security - Basics</h1>
        
@@ -266,23 +265,23 @@ public class AddUserModel {
             <br/>
             <br/>
              <p class="underline font-weight-bold h4">AddUserModelRepository.java</p>
-             <img src="<spring:url value='/images/SpringSecurity/AddUserModelRepository.PNG'/>" alt="Image Preview not Available" class="img-fluid img-square">
+             <img src="/images/SpringSecurity/AddUserModelRepository.PNG" alt="Image Preview not Available" class="img-fluid img-square">
             <br/>
             <br/>
               <p class="underline font-weight-bold h4">SpringSecurityBasicsApplication.java</p>
-              <img src="<spring:url value='/images/SpringSecurity/SpringSecurityApplication.PNG'/>" alt="Image Preview not Available" class="img-fluid img-square">
+              <img src="/images/SpringSecurity/SpringSecurityApplication.PNG" alt="Image Preview not Available" class="img-fluid img-square">
             <br/>
             <br/>
               <p class="underline font-weight-bold h4">InterfSaveService.java</p>
-              <img src="<spring:url value='/images/SpringSecurity/InterfSaveService.PNG'/>" alt="Image Preview not Available" class="img-fluid img-square">
+              <img src="/images/SpringSecurity/InterfSaveService.PNG" alt="Image Preview not Available" class="img-fluid img-square">
                <br/>
                <br/>
               <p class="underline font-weight-bold h4">SaveService.java</p>
-               <img src="<spring:url value='/images/SpringSecurity/SaveService.PNG'/>" alt="Image Preview not Available" class="img-fluid img-square">
+               <img src="/images/SpringSecurity/SaveService.PNG" alt="Image Preview not Available" class="img-fluid img-square">
               <br>
               <br>
                <p class="underline font-weight-bold h4">application.properties</p>
-                <img src="<spring:url value='/images/SpringSecurity/applicationProperties.PNG'/>" alt="Image Preview not Available" class="img-fluid img-square">
+                <img src="/images/SpringSecurity/applicationProperties.PNG" alt="Image Preview not Available" class="img-fluid img-square">
                 
                 <br/>
                 <br/>
@@ -295,13 +294,13 @@ public class AddUserModel {
                   <br/>
                   <div>Run the springSecurityBasicApplication.java file and enter the following link:-<span class="underline">localhost:8080</span>.</div>
                   <br/>
-                  <img src="<spring:url value='/images/SpringSecurity/SpringSecurityDefaultLogin.PNG'/>" alt="Image Preview not Available" class="img-fluid img-square">
+                  <img src="/images/SpringSecurity/SpringSecurityDefaultLogin.PNG" alt="Image Preview not Available" class="img-fluid img-square">
                   <br/>
                   <br/>
                   <div>Enter the username and password which you have mentioned in the following application.properties File. 
                   After that landing page will come which you have designed.</div>
                   <br/>
-                   <img src="<spring:url value='/images/SpringSecurity/landingPage.PNG'/>" alt="Image Preview not Available" class="img-fluid img-square">
+                   <img src="/images/SpringSecurity/landingPage.PNG" alt="Image Preview not Available" class="img-fluid img-square">
                    <br/>
                    <br/>
                    <div>You can download the project from the <a href="https://github.com/boklu-aditya/spring-security-Basics.git">Github</a>Link and the sql file inside resources folder.</div>

@@ -7,17 +7,23 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+  
     <!-- BootsTrap 4.1.3 CSS Version -->      
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     
    <!-- BootsTrap 4.1.3 JS Version  -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
-   integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>   
+
    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
+   integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      
+   
+   <!-- </script> -->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" 
    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+   
+     
    
    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" 
    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
@@ -29,8 +35,12 @@
    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" 
    integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
    
-   <!-- JQuery Mobile plugin -->
-   <script type="text/javascript" src="<spring:url value="/CustomJs/jquery.mobile.custom.min.1.5.0.js"/>"></script>
+   <!-- JQuery plugin -->
+         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+         
+         
+ <%-- Keep this code for temproary test it properly and if it is working fine in mobile without this plugin delete the code. 
+    <script type="text/javascript" src="<spring:url value="/CustomJs/jquery.mobile.custom.min.1.5.0.js"/>"></script>  --%>
    
   <!--  scrollbar Plugin  CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.css">
@@ -51,9 +61,10 @@
     <link rel="stylesheet" href='<spring:url value="/CustomCss/common.css"/>'>
   
     <!-- Custom JS -->
+     
     <script type="text/javascript" src="<spring:url value="/CustomJs/CustomJs.js"/>"></script>
     <script type="text/javascript" src="<spring:url value="/CustomJs/CustomPlugin.js"/>"></script> 
-    
+
     <script type="text/javascript" src="<spring:url value="/CustomJs/ParFw.js"/>"></script>
     
     <script type="text/javascript">
@@ -62,9 +73,6 @@
      });
     </script>
    
- 
-    
-
     <title>templatePractice</title>
   </head>
   <body>

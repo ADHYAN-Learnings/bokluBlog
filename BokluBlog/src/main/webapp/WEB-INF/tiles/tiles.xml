@@ -36,6 +36,18 @@
     <definition name="addHeaderSubSection" extends="admin.definition">       
         <put-attribute name="body" value="/WEB-INF/views/body/admin/headerSubSection.jsp" />  
     </definition>
+    
+    <definition name="blogTable" extends="admin.definition">       
+        <put-attribute name="body" value="/WEB-INF/views/body/admin/blogTable.jsp" />  
+    </definition>
+    
+    <definition name="addBlog" extends="admin.definition">       
+        <put-attribute name="body" value="/WEB-INF/views/body/admin/addBlog.jsp" />  
+    </definition>
+    
+    <definition name="checkBlog" extends="adminLogin">       
+        <put-attribute name="body" value="/WEB-INF/views/body/admin/checkBlog.jsp" />  
+    </definition>
      
     
   <!-- ###################Admin Section ENDS Here############################################### --> 

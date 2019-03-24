@@ -9,4 +9,6 @@ public interface InterfHeaderSubSection {
 	HeaderSubSection saveHeaderSubSection(HeaderSubSection headerSubSection);
 	List<HeaderSubSection> getHeaderSubSectionDetails();
 	HeaderSubSection findBySubSectionId(Long subSectionId);
+	
+	List<HeaderSubSection> getHeaderSubSectionSubject(Long headerLinkId);
 }
