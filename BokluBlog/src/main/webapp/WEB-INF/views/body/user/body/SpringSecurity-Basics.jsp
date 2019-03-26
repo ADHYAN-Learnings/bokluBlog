@@ -16,7 +16,7 @@
            </ol>
            <br/>
            <p class="underline font-weight-bold h4">Project Structure</p>
-            <img src="<spring:url value='/images/SpringSecurity/ProjectStructure.PNG'/>" alt="Image Preview not Available" class="img-fluid img-square">
+            <img src="/images/SpringSecurity/ProjectStructure.PNG" alt="Image Preview not Available" class="img-fluid img-square">
             <br/>
             <br/>
            <p class="underline font-weight-bold h4">pom.xml</p>

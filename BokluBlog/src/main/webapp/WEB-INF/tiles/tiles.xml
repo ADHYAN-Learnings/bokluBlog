@@ -48,6 +48,10 @@
     <definition name="checkBlog" extends="adminLogin">       
         <put-attribute name="body" value="/WEB-INF/views/body/admin/checkBlog.jsp" />  
     </definition>
+    
+    <definition name="fileUpload" extends="admin.definition">       
+        <put-attribute name="body" value="/WEB-INF/views/body/admin/fileUpload.jsp" />  
+    </definition>
      
     
   <!-- ###################Admin Section ENDS Here############################################### --> 

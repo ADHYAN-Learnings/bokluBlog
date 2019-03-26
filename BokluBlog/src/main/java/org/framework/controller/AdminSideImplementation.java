@@ -5,6 +5,7 @@ package org.framework.controller;
 import javax.validation.Valid;
 
 import org.framework.adminService.InterfBlogService;
+import org.framework.adminService.InterfFileUpload;
 import org.framework.adminService.InterfHeaderLink;
 import org.framework.adminService.InterfHeaderSubSection;
 import org.framework.model.Blog;
@@ -18,6 +19,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -43,6 +46,9 @@ private static final Logger logger = LoggerFactory.getLogger(AdminSideImplementa
    
    @Autowired
    private InterfBlogService interfBlogService;
+   
+   @Autowired
+   private InterfFileUpload interfFileUpload;
 	
 	@RequestMapping(value="/dashboard",method=RequestMethod.GET)
 	public String getLandingPage() {
@@ -156,5 +162,22 @@ private static final Logger logger = LoggerFactory.getLogger(AdminSideImplementa
 		 return new ModelAndView("addBlog","blogData",blogDetails);
 		 
 	 }
-	
+	 
+	 @GetMapping("/fileUpload")
+	 public String fileUploadDisplayPage() {
+		 return "fileUpload";
+	 }
+	 @PostMapping("/uploadFile")
+	 public ModelAndView saveFile(Model model,@RequestParam("files") MultipartFile[] files , RedirectAttributes redirectAttributes) {
+		 logger.debug(":::AdminSideImplementation:::::saveFile");
+	     StringBuilder fileNames= new StringBuilder();
+		 if(files.length<=0) {
+			 redirectAttributes.addFlashAttribute("message", "Please Select a file to upload");
+			 return new ModelAndView("redirect:/admin/fileUpload");
+		 }
+		  fileNames =  interfFileUpload.fileUpload(files);
+		  redirectAttributes.addFlashAttribute("message","Files successfully uploaded "+fileNames);
+		  
+		 return new ModelAndView("redirect:/admin/fileUpload");
+	 }
 }
