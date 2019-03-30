@@ -8,8 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.frameword.functionalInterface.AccessUsername;
+import org.framework.adminService.InterfBlogService;
 import org.framework.adminService.InterfHeaderLink;
 import org.framework.email.PasswordResetEmail;
+import org.framework.model.Blog;
 import org.framework.model.Comments;
 import org.framework.model.HeaderLink;
 import org.framework.model.OnRegistrationCompleteEvent;
@@ -69,6 +71,9 @@ public class UserSideImplementation {
 	
 	@Autowired
 	private InterfPostCommentService interfPostCommentService;
+	
+	@Autowired
+	private InterfBlogService interfBlogService;
 	
 	
 	
@@ -247,7 +252,21 @@ public class UserSideImplementation {
 	      interfPostCommentService.saveComments(comments);
 		    return new ModelAndView("redirect:/boklu/searchHeader/"+comments.getHeaderLink().getPath());
 	    }
+	
+	   
+	   @RequestMapping("/Spring Security/{subject}")
+	   public ModelAndView getStoreDetails(@PathVariable("subject") String subject , Model model) {
+		   logger.debug(":::::UserSideImplementation::::getStoreDetails::contentName::::"+subject);
+		   Blog b = interfBlogService.findByheaderSubject(subject);
+		   logger.debug(":::Blog:::"+b.toString());
+		   model.addAttribute("blog",interfBlogService.findByheaderSubject(subject));
+		   List<HeaderLink> headerLinkWithSequence = interfHeaderLink.getHeaderLinkOrderBySequence("Active");
+		    model.addAttribute("headerLinkWithSequence",headerLinkWithSequence); 
+		    model.addAttribute("postComment",new Comments());
+		   return new ModelAndView("boklu","blog",b);
+	   }
    
+	  
 
 }
 

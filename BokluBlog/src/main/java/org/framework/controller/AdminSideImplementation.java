@@ -150,7 +150,6 @@ private static final Logger logger = LoggerFactory.getLogger(AdminSideImplementa
 	 
 	 @PostMapping("/blogTest")
 	 public ModelAndView testBlog(Model model,Blog blog) {
-		 logger.debug(":::::"+blog.getBlogData());
 		 return new ModelAndView("checkBlog","blog",blog);
 	 }
 	 

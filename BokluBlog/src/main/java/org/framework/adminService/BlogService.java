@@ -30,4 +30,10 @@ public class BlogService implements InterfBlogService {
 		return blogRepository.getOne(blogId);
 	}
 
+	@Override
+	public Blog findByheaderSubject(String subject) {
+		
+		return blogRepository.findByheaderSubject(subject);
+	}
+
 }

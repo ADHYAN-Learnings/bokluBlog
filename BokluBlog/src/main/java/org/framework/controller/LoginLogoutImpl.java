@@ -2,6 +2,7 @@ package org.framework.controller;
 
 import java.util.List;
 
+import org.framework.adminService.InterfBlogService;
 import org.framework.adminService.InterfHeaderLink;
 import org.framework.model.Comments;
 import org.framework.model.HeaderLink;
@@ -19,6 +20,9 @@ public class LoginLogoutImpl {
 	@Autowired
 	private InterfHeaderLink interfHeaderLink;
 	
+	@Autowired
+	private InterfBlogService interfBlogService;
+	
 	@RequestMapping(value = "/admin")
 	public String getAdminLogin() {
 	logger.debug(":::LoginLogoutImpl:::getAdminLogin:::");	
@@ -28,7 +32,8 @@ public class LoginLogoutImpl {
 	@RequestMapping(value="/boklu")
 	public String getStore(Model model) {
 	logger.debug(":::LoginLogoutImpl:::getStore:::");
-	
+	/* Id '1' is given for temporary purpose once I will understand the aws and search engine. */
+	model.addAttribute("blog", interfBlogService.findByBlogId(Long.parseLong("1")));
 	List<HeaderLink> headerLinkWithSequence = interfHeaderLink.getHeaderLinkOrderBySequence("Active");
     model.addAttribute("headerLinkWithSequence",headerLinkWithSequence); 
     model.addAttribute("postComment",new Comments());

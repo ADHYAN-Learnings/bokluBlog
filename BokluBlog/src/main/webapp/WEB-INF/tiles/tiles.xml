@@ -71,7 +71,7 @@
   </definition>
   
   
-  <definition name="boklu" extends="user.definition">       
+  <definition name="boklu" extends="userPage.definition">       
         <put-attribute name="body" value="/WEB-INF/views/body/user/body/boklu.jsp" />    
     </definition>  
     
