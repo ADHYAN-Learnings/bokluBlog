@@ -10,5 +10,4 @@ public interface InterfHeaderLink {
 	List<HeaderLink>  getHeaderLinkOrderBySequence(String status);
 	List<HeaderLink>  getHeaderLinkDetails();
 	HeaderLink    getHeaderLinkById(Long id);
-    HeaderLink    getHeaderLinkByPath(String path);
 }

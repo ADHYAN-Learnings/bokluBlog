@@ -21,7 +21,6 @@
          <tr>
           <th>Action </th>
           <th>Categories</th>
-          <th>Path</th>
           <th>Status</th>
           <th>Sequence</th>
          </tr>
@@ -33,7 +32,6 @@
              <td><span><a href="<spring:url value='/admin/edit/${headerLinkDetails.id }'/>">
               <i class="fa fa-pencil-alt" aria-hidden="true"></i></a></span></td>
              <td>${headerLinkDetails.category }</td>
-             <td>${headerLinkDetails.path }</td>
              <td>${headerLinkDetails.status }</td>
              <td>${headerLinkDetails.sequence }</td>
            </tr>

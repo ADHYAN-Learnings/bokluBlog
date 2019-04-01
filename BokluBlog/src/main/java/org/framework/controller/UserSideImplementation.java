@@ -219,23 +219,6 @@ public class UserSideImplementation {
 	    logger.debug("::UserSideImplementation::getDirectAccessResetPassword::");
 			return "resetPassword";
 		}
-	  
-	  @RequestMapping(value="/searchHeader/{searchHeaderLink}")
-	  public ModelAndView getSearchHeaderValue(@PathVariable(value="searchHeaderLink") String searchHeaderLink, 
-		     Model model , HeaderLink headerLink, Comments comments) {
-			 
-	   if(searchHeaderLink.equalsIgnoreCase("spring_security")) {
-		   
-		List<HeaderLink> headerLinkWithSequence = interfHeaderLink.getHeaderLinkOrderBySequence("Active");
-		model.addAttribute("headerLinkWithSequence",headerLinkWithSequence);
-		List<Comments> displayComments = interfPostCommentService.getCommentBySequence();
-		model.addAttribute("displayComments", displayComments);
-		
-		comments.setHeaderLink(interfHeaderLink.getHeaderLinkByPath(searchHeaderLink));
-		return new ModelAndView("springSecurityBasic","postComment",comments);
-	     }	 
-		return new ModelAndView("ConstructionPage","constructionPage",comments);
-		}
 		 
 	   @RequestMapping(value="/saveComment",method=RequestMethod.POST)
 	   public ModelAndView saveComment(@ModelAttribute("postComment") @Valid  final Comments comments ,final BindingResult result , Model model) {
@@ -250,7 +233,7 @@ public class UserSideImplementation {
 		}
 		
 	      interfPostCommentService.saveComments(comments);
-		    return new ModelAndView("redirect:/boklu/searchHeader/"+comments.getHeaderLink().getPath());
+		    return new ModelAndView("redirect:/boklu/searchHeader/"+comments.getHeaderLink());
 	    }
 	
 	   
@@ -258,7 +241,6 @@ public class UserSideImplementation {
 	   public ModelAndView getStoreDetails(@PathVariable("subject") String subject , Model model) {
 		   logger.debug(":::::UserSideImplementation::::getStoreDetails::contentName::::"+subject);
 		   Blog b = interfBlogService.findByheaderSubject(subject);
-		   logger.debug(":::Blog:::"+b.toString());
 		   model.addAttribute("blog",interfBlogService.findByheaderSubject(subject));
 		   List<HeaderLink> headerLinkWithSequence = interfHeaderLink.getHeaderLinkOrderBySequence("Active");
 		    model.addAttribute("headerLinkWithSequence",headerLinkWithSequence); 

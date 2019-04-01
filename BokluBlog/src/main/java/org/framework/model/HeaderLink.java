@@ -24,10 +24,6 @@ public class HeaderLink {
 	@Column(name="Category")
 	private String category;
 	
-	@NotEmpty(message="Path is Required.")
-	@Column(name="Path")
-	private String path;
-	
 	@Column(name="Status")
 	private String status;
 	
@@ -51,14 +47,6 @@ public class HeaderLink {
 		this.category = category;
 	}
 
-	public String getPath() {
-		return path;
-	}
-
-	public void setPath(String path) {
-		this.path = path;
-	}
-
 	public String getStatus() {
 		return status;
 	}
@@ -77,7 +65,7 @@ public class HeaderLink {
 
 	@Override
 	public String toString() {
-		return "HeaderLink [id=" + id + ", category=" + category + ", path=" + path + ", status=" + status
+		return "HeaderLink [id=" + id + ", category=" + category + ", status=" + status
 				+ ", sequence=" + sequence + "]";
 	}
 }

@@ -31,19 +31,7 @@
              <form:errors path="category" cssClass="error"></form:errors> 
             </div>
            </div>
-          
-           <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6">
-            <div class="form-group">
-             <form:label class="control-label" path="path">Enter the Path</form:label>
-             <form:input path="path" maxlength="50" class="form-control"/>
-             <form:errors path="path" cssClass="error"></form:errors> 
-          </div> 
-           
-          </div>
-           </div>
-           <div class="row">
-           
-           <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6">
+            <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6">
             <div class="form-group">
             <form:label class="control-label" path="status">Select the status</form:label>
             <form:select path="status" class="form-control"> 
@@ -52,7 +40,11 @@
             <form:errors path="status" cssClass="error"></form:errors> 
             </div>
            </div>
+       
            
+  
+           </div>
+           <div class="row">           
             <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6">
              <div class="form-group">
              <form:label class="control-label" path="sequence">Select the Sequence</form:label>

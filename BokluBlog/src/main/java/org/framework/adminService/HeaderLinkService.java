@@ -39,12 +39,4 @@ public class HeaderLinkService implements InterfHeaderLink {
 	public HeaderLink getHeaderLinkById(Long id) {
 		return headerLinkRepository.getOne(id);
 	}
-
-	@Override
-	public HeaderLink getHeaderLinkByPath(String path) {
-		return headerLinkRepository.findByPath(path);
-	}
-
-	
-
 }

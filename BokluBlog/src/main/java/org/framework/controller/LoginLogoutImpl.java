@@ -33,7 +33,7 @@ public class LoginLogoutImpl {
 	public String getStore(Model model) {
 	logger.debug(":::LoginLogoutImpl:::getStore:::");
 	/* Id '1' is given for temporary purpose once I will understand the aws and search engine. */
-	model.addAttribute("blog", interfBlogService.findByBlogId(Long.parseLong("1")));
+	model.addAttribute("blog", interfBlogService.findByBlogId(Long.parseLong("1"))); 
 	List<HeaderLink> headerLinkWithSequence = interfHeaderLink.getHeaderLinkOrderBySequence("Active");
     model.addAttribute("headerLinkWithSequence",headerLinkWithSequence); 
     model.addAttribute("postComment",new Comments());
