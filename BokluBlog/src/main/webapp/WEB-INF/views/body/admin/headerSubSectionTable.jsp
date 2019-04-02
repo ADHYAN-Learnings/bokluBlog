@@ -29,7 +29,7 @@
          <tbody>
           <c:forEach var="headerSubSectionDetails" items="${headerSubSectionData}">
            <tr>
-             <td><span><a href="<spring:url value='/admin/editHeaderSubSectionData/${headerSubSectionDetails.headerCategory.id }'/>">
+             <td><span><a href="<spring:url value='/admin/editHeaderSubSectionData/${headerSubSectionDetails.subSectionId }'/>">
               <i class="fa fa-pencil-alt" aria-hidden="true"></i></a></span></td>
              <td>${headerSubSectionDetails.headerCategory.category }</td>
              <td>${headerSubSectionDetails.subject }</td>

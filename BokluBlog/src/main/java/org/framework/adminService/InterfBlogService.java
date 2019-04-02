@@ -3,7 +3,6 @@ package org.framework.adminService;
 import java.util.List;
 
 import org.framework.model.Blog;
-import org.springframework.data.jpa.repository.Query;
 
 public interface InterfBlogService {
 	

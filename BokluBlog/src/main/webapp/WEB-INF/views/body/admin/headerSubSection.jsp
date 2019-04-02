@@ -31,6 +31,17 @@
              <form:label class="control-label" path="headerCategory">Enter the headerCategory</form:label>
              <form:select path="headerCategory" class="form-control">
               <form:options items="${headerCategories }" />
+              <c:forEach items="${headerCategories}" var="headerCategory">
+               <c:choose>
+                 <c:when test="${headerCategory.key eq headerSubSectionData.headerCategory.id }">
+                  <form:option value="${headerCategory.key }" selected="selected" ><c:out value="${headerCategory.value }"/></form:option>
+                 </c:when>
+                 <c:otherwise>
+                  <form:option value="${headerCategory.key }"><c:out value="${headerCategory.value }"/></form:option>
+                </c:otherwise>
+               </c:choose>
+                
+              </c:forEach>
              </form:select>
              <form:errors path="headerCategory" cssClass="error"></form:errors> 
             </div>
