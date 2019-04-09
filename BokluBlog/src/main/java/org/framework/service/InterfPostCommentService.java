@@ -7,5 +7,5 @@ import org.framework.model.Comments;
 public interface InterfPostCommentService {
    
   Comments saveComments(Comments comments);
-  List<Comments> getCommentBySequence();
+  List<Comments> findByHeaderSubSectionOrderById(Long id);
   }

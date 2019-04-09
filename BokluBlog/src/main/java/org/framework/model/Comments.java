@@ -1,5 +1,7 @@
 package org.framework.model;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,8 +17,13 @@ import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name="Post_Comment")
-public class Comments {
+public class Comments implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="COMMENT_ID")
@@ -36,8 +43,8 @@ public class Comments {
 	private String name;
 	
 	@ManyToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "HeaderLink_Post_Id", nullable = false)
-	private HeaderLink headerLink;
+	@JoinColumn(name = "HeaderSubSection_Post_Id", nullable = false)
+	private HeaderSubSection headerSubSection;
 	
 	
 
@@ -73,18 +80,17 @@ public class Comments {
 		this.name = name;
 	}
 
-	public HeaderLink getHeaderLink() {
-		return headerLink;
+	public HeaderSubSection getHeaderSubSection() {
+		return headerSubSection;
 	}
 
-	public void setHeaderLink(HeaderLink headerLink) {
-		this.headerLink = headerLink;
+	public void setHeaderSubSection(HeaderSubSection headerSubSection) {
+		this.headerSubSection = headerSubSection;
 	}
 
 	@Override
 	public String toString() {
-		return "Comments [id=" + id + ", comment=" + comment + ", email=" + email + ", name=" + name + ", headerLink="
-				+ headerLink + "]";
+		return "Comments [id=" + id + ", comment=" + comment + ", email=" + email + ", name=" + name
+				+ ", headerSubSection=" + headerSubSection + "]";
 	}
-	
 }

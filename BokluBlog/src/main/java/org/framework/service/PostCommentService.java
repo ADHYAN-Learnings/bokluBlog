@@ -21,8 +21,8 @@ public class PostCommentService implements InterfPostCommentService {
 	}
 
 	@Override
-	public List<Comments> getCommentBySequence() {
-		return postCommentRepository.findAllByOrderByIdDesc();
+	public List<Comments> findByHeaderSubSectionOrderById(Long id) {
+		return postCommentRepository.findByHeaderSubSectionAndOrderById(id);
 	}
 
 

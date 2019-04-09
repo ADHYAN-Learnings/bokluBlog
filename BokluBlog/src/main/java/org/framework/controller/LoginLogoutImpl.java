@@ -6,6 +6,7 @@ import org.framework.adminService.InterfBlogService;
 import org.framework.adminService.InterfHeaderLink;
 import org.framework.model.Comments;
 import org.framework.model.HeaderLink;
+import org.framework.service.InterfPostCommentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,10 @@ public class LoginLogoutImpl {
 	@Autowired
 	private InterfBlogService interfBlogService;
 	
+	@Autowired
+	private InterfPostCommentService interfPostCommentService;
+
+	
 	@RequestMapping(value = "/admin")
 	public String getAdminLogin() {
 	logger.debug(":::LoginLogoutImpl:::getAdminLogin:::");	
@@ -36,7 +41,9 @@ public class LoginLogoutImpl {
 	model.addAttribute("blog", interfBlogService.findByBlogId(Long.parseLong("1"))); 
 	List<HeaderLink> headerLinkWithSequence = interfHeaderLink.getHeaderLinkOrderBySequence("Active");
     model.addAttribute("headerLinkWithSequence",headerLinkWithSequence); 
+
     model.addAttribute("postComment",new Comments());
+    model.addAttribute("displayComments",interfPostCommentService.findByHeaderSubSectionOrderById(Long.parseLong("1")));
 		return "boklu";
 	}
 	
