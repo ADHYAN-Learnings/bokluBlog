@@ -27,8 +27,8 @@
     <link rel="stylesheet" href="<spring:url value='/CustomCss/Login.css'/>">
     <link rel="stylesheet" href='<spring:url value="/CustomCss/common.css"/>'>
     
-    <!-- Custom JS -->
-    <script type="text/javascript" src="<spring:url value="/CustomJs/CustomUserJs.js"/>"></script> 
+    <!-- Custom JS --> 
+    <script type="text/javascript" src="<spring:url value="/CustomJs/ParFw.js"/>"></script>
    
     <title>templatePractice</title>  
  </head>

@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.framework.practice</groupId>
-	<artifactId>OneLoginPageTemplate</artifactId>
+	<artifactId>BokluBlog</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<name>OneLoginPageTemplate</name>
-	<description>Demo project for Spring Boot</description>
+	<name>BokluBlog</name>
+	<description>A project for blog</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -55,11 +55,11 @@
             <artifactId>tiles-jsp</artifactId>
             <version>3.0.8</version>
         </dependency>
-        <dependency>
+         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
             <scope>provided</scope>
-        </dependency>
+        </dependency> 
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>

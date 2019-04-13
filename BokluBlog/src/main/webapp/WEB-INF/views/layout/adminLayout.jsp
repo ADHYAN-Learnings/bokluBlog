@@ -61,10 +61,6 @@
     <link rel="stylesheet" href='<spring:url value="/CustomCss/common.css"/>'>
   
     <!-- Custom JS -->
-     
-    <script type="text/javascript" src="<spring:url value="/CustomJs/CustomJs.js"/>"></script>
-    <script type="text/javascript" src="<spring:url value="/CustomJs/CustomPlugin.js"/>"></script> 
-
     <script type="text/javascript" src="<spring:url value="/CustomJs/ParFw.js"/>"></script>
     
     <script type="text/javascript">

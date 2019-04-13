@@ -48,7 +48,10 @@
               </div>
               </div>
              </div>
-             <div id="commentSection" class="card-footer">
+              <div id="commentSection">
+               <c:if  test="${ not empty displayComments}">
+              <div  class="card-footer">
+                         
                <c:forEach var="displayComments" items="${displayComments }">
                  <div class="row mb-2">
                  <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
@@ -61,7 +64,10 @@
                </div>
             
                </c:forEach>
+               
              </div>
+              </c:if>
+            </div>
             </div>    
           </div>
         </div>
@@ -99,9 +105,11 @@
         			type:"POST",
         			success:function(data){
         				$("#commentSection").empty();
+        				$("")
         				$.each(data,function(index,commentBean){
         					
-        					$("#commentSection").append("<div class='row mb-2'>"+
+        					$("#commentSection").append("<div class='card-footer'>"+
+        							                      "<div class='row mb-2'>"+
         							                      "<div class='col-xs-2 col-sm-2 col-md-2 col-lg-2'>"+
         							                      "<img src='<spring:url value='/images/user-image.png'/>' alt='Image Preview not Available' class='img-fluid img-square' style='width:70%'>"+
         							                      "</div>"+
@@ -110,6 +118,7 @@
         							                      "<p><span>"+commentBean.comments+"</span></p>"+
         							                      "</div>"+
         							                      "</div>"+
+        					                           "</div>"+
         					                           "</div>");
         				});
         				$("#comment").val("");
