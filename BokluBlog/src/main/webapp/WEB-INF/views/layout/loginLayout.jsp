@@ -30,7 +30,7 @@
     <!-- Custom JS --> 
     <script type="text/javascript" src="<spring:url value="/CustomJs/ParFw.js"/>"></script>
    
-    <title>templatePractice</title>  
+    <title>Boklu</title>  
  </head>
   <body>
     <div class="container-fluid">

@@ -18,7 +18,8 @@
        </li>
      </c:forEach>
       
-      <li class="dropdown">
+    <%-- This code is commented because for temporary reason we don't need user sign in  
+       <li class="dropdown">
         <a class="dropdown-toggle  whiteText" data-toggle="dropdown" href="#">
          <c:if test="${!isUser}">Sign In</c:if>
          <c:if test="${isUser}"><c:out value="${username }"></c:out> </c:if> 
@@ -35,6 +36,7 @@
             <li style="text-decoration:underline;"><a class="dropdown-item link"  href="<spring:url value='/boklu/logout'/>"><small>Sign Out</small></a></li>
            </c:if>
         </ul>
+        </li> --%>
     </ul>
  
   </div>

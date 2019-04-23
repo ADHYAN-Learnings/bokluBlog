@@ -30,7 +30,6 @@
             <div class="form-group">
              <form:label class="control-label" path="headerCategory">Enter the headerCategory</form:label>
              <form:select path="headerCategory" class="form-control">
-              <form:options items="${headerCategories }" />
               <c:forEach items="${headerCategories}" var="headerCategory">
                <c:choose>
                  <c:when test="${headerCategory.key eq headerSubSectionData.headerCategory.id }">

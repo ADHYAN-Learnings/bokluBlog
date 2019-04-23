@@ -69,7 +69,7 @@
      });
     </script>
    
-    <title>templatePractice</title>
+    <title>Boklu</title>
   </head>
   <body>
       
