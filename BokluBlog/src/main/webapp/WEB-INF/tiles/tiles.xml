@@ -91,9 +91,6 @@
         <put-attribute name="body" value="/WEB-INF/views/body/user/forgotPassword/forgotResetPassword.jsp" />    
     </definition> 
     
-     <definition name="springSecurityBasic" extends="userPage.definition">       
-        <put-attribute name="body" value="/WEB-INF/views/body/user/body/SpringSecurity-Basics.jsp" />    
-    </definition> 
   
    <!-- ###################User Section ENDS Here################################################ --> 
   

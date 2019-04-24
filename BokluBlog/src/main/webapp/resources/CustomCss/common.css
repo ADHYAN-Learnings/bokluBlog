@@ -1,1 +1,29 @@
-.error{color:red}.borderColor{border:1px solid #000}.link{color:#00f}.margin-top-6{margin-top:6rem!important}ul.dropdown-menu{right:0;left:auto}.underline{text-decoration:underline}
+
+.error {
+	color: red
+}
+
+.borderColor {
+	border: 1px solid #000
+}
+
+.link {
+	color: #00f
+}
+
+.margin-top-6 {
+	margin-top: 6rem!important
+}
+
+ul.dropdown-menu {
+	right: 0;
+	left: auto
+}
+
+.underline {
+	text-decoration: underline
+}
+
+.whiteBackground {
+	background-color:#FFF
+}
