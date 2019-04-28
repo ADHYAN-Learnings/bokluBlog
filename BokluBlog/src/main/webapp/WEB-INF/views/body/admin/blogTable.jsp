@@ -20,8 +20,8 @@
          <tr>
           <th>Action </th>
           <th>HeaderCategory</th>
-          <th>HeaderSubject</th>
           <th>Previous Subject</th>
+          <th>Header Subject</th>
           <th>Next Subject</th>
          </tr>
          </thead>
@@ -32,8 +32,8 @@
              <td><span><a href="/admin/editblog/${blogData.blogId }">
               <i class="fa fa-pencil-alt" aria-hidden="true"></i></a></span></td>
              <td><c:out value="${ blogData.headerCategory.category }"></c:out></td>
-             <td><c:out default="None"  value="${not empty blogData.headerSubject.subject ?  blogData.headerSubject.subject : 'None'}"/></td> 	
              <td><c:out default="None"  value="${not empty blogData.previousLink.subject ?  blogData.previousLink.subject : 'None'}"/></td>
+             <td><c:out default="None"  value="${not empty blogData.headerSubject.subject ?  blogData.headerSubject.subject : 'None'}"/></td> 	
              <td><c:out default="None"  value="${not empty blogData.nextLink.subject ? blogData.nextLink.subject : 'None'}"/></td>
            </tr>
            </c:forEach>
