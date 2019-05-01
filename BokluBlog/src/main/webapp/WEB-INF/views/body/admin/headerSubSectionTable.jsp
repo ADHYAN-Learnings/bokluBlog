@@ -42,6 +42,8 @@
      </div>
   
   </div>
- 
+  <script type="text/javascript">
+   $("#headerSubSection").addClass("active").siblings().removeClass("active");
+  </script>
  </body>
 </html>

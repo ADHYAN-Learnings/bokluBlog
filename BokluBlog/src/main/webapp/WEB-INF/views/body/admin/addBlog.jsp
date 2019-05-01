@@ -155,6 +155,7 @@
      	$("#blogform").attr("target","");
      	
       }
+     $("#blog").addClass("active").siblings().removeClass("active");
     </script> 
    </div>
  </body>

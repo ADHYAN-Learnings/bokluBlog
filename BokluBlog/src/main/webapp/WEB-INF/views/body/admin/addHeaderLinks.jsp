@@ -72,6 +72,9 @@
          </form:form>
        </div>
      </div>
+     <script type="text/javascript">
+      $("#headerLink").addClass("active").siblings().removeClass("active");
+     </script>
    </div> 
    </body>
 </html>

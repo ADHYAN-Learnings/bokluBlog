@@ -40,4 +40,9 @@
          </tbody>
        </table> 
      </div>
+     <script type="text/javascript">
+        $("#blog").addClass("active").siblings().removeClass("active");
+        </script>
     </div>
+    </body>
+    </html>

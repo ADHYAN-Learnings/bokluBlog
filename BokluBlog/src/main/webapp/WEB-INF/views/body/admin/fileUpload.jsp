@@ -25,6 +25,9 @@
        </form:form>
       </div>
      </div>
+     <script type="text/javascript">
+     $("#fileUpload").addClass("active").siblings().removeClass("active");
+     </script>
    </div>
  </body>
 </html>
