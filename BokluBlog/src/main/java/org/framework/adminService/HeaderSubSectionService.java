@@ -37,4 +37,9 @@ public class HeaderSubSectionService  implements InterfHeaderSubSection {
 		return headerSubSectionRepository.findByHeaderCategory(headerLinkId);
 	}
 
+	@Override
+	public Long getCount() {
+		return headerSubSectionRepository.count();
+	}
+
 }

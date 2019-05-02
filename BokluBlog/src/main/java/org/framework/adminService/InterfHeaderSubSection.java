@@ -11,4 +11,5 @@ public interface InterfHeaderSubSection {
 	HeaderSubSection findBySubSectionId(Long subSectionId);
 	
 	List<HeaderSubSection> getHeaderSubSectionSubject(Long headerLinkId);
+	Long getCount();
 }

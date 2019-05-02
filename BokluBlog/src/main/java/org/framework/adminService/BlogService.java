@@ -36,4 +36,9 @@ public class BlogService implements InterfBlogService {
 		return blogRepository.findByheaderSubject(subject);
 	}
 
+	@Override
+	public Long getCount() {
+		return blogRepository.count();
+	}
+
 }

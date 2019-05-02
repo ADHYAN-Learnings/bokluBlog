@@ -1,6 +1,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+<link rel="stylesheet" href='<spring:url value="/CustomCss/sideMenu.css"/>'>
 <div class="sidebar-header">
  <h3>Bootstrap sidebar</h3>
 </div>

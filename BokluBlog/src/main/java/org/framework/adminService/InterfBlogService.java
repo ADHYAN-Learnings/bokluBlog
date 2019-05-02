@@ -10,5 +10,5 @@ public interface InterfBlogService {
 	List<Blog> getAllData();
 	Blog findByBlogId(Long blogId);
 	Blog findByheaderSubject(String subject);
-
+    Long getCount();
 }

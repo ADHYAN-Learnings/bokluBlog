@@ -11,7 +11,7 @@
 	<div class="our-team-main">
 	<div class="team-front">
 	<a href="<spring:url value='/admin/headerLinks'/>">
-	  <img src="http://placehold.it/110x110/9c27b0/fff?text=Dilip" class="img-fluid" />
+	  <img src="http://placehold.it/110x110/9c27b0/fff?text=${headerLinkCount}" class="img-fluid" />
 	</a>
 	<h3>Header Links</h3>
 	</div>
@@ -25,7 +25,7 @@
 	
 	<div class="team-front">
 	 <a href="<spring:url value='/admin/headerLinksSubSection'/>">
-	 <img src="http://placehold.it/110x110/336699/fff?text=Dilip" class="img-fluid" />
+	 <img src="http://placehold.it/110x110/336699/fff?text=${headerSubSectionCount}" class="img-fluid" />
 	 </a>
 	<h3>Header SubSection</h3>
 	</div>
@@ -38,7 +38,7 @@
 	<div class="our-team-main">
 	
 	<div class="team-front">
-	 <a href="<spring:url value='/admin/blog'/>"><img src="http://placehold.it/110x110/607d8b/fff?text=Dilip" class="img-fluid" /></a>
+	 <a href="<spring:url value='/admin/blog'/>"><img src="http://placehold.it/110x110/607d8b/fff?text=${blogCount}" class="img-fluid" /></a>
 	<h3>Blog</h3>
 	</div>
 	

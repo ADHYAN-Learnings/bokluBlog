@@ -56,8 +56,6 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
    
    <!--Custom CSS  -->
-    <link rel="stylesheet" href='<spring:url value="/CustomCss/sideMenu.css"/>'>
-    
     <link rel="stylesheet" href='<spring:url value="/CustomCss/common.css"/>'>
   
     <!-- Custom JS -->

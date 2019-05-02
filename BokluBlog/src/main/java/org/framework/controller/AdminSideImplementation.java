@@ -1,7 +1,6 @@
 package org.framework.controller;
 
 
-
 import javax.validation.Valid;
 
 import org.framework.adminService.InterfBlogService;
@@ -27,6 +26,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.framework.model.HeaderSubSection;
+import org.framework.model.PasswordChange;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -51,8 +51,11 @@ private static final Logger logger = LoggerFactory.getLogger(AdminSideImplementa
    private InterfFileUpload interfFileUpload;
 	
 	@RequestMapping(value="/dashboard",method=RequestMethod.GET)
-	public String getLandingPage() {
+	public String getLandingPage(Model model) {
 	logger.debug("::AdminSideImplementation:::getLandingPage:::");
+	 model.addAttribute("headerLinkCount", interfHeaderLink.getCount());
+	 model.addAttribute("headerSubSectionCount", interfHeaderSubSection.getCount());
+	 model.addAttribute("blogCount",interfBlogService.getCount());
 		return "dashboard";
 	}
 	
@@ -178,5 +181,9 @@ private static final Logger logger = LoggerFactory.getLogger(AdminSideImplementa
 		  redirectAttributes.addFlashAttribute("message","Files successfully uploaded "+fileNames);
 		  
 		 return new ModelAndView("redirect:/admin/fileUpload");
+	 }
+	 
+	 public ModelAndView passwordChange(Model model) {
+		 return new ModelAndView("passwordChange","passwordChange",new PasswordChange());
 	 }
 }
