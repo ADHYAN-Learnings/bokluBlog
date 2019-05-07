@@ -15,7 +15,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.persistence.Table;
 import javax.persistence.Column;
 import org.framework.validation.PasswordMatches;
-
+import org.hibernate.annotations.DynamicUpdate;
 
 /**
  * @author Aditya
@@ -24,6 +24,7 @@ import org.framework.validation.PasswordMatches;
 @Entity
 @Table(name="USER_REGISTRATION")
 @PasswordMatches 
+@DynamicUpdate
 public class UserRegistration {
 	
 	@Id

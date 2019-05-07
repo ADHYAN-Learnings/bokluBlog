@@ -1,18 +1,24 @@
 package org.framework.controller;
 
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.framework.adminService.InterfBlogService;
 import org.framework.adminService.InterfFileUpload;
 import org.framework.adminService.InterfHeaderLink;
 import org.framework.adminService.InterfHeaderSubSection;
+import org.framework.adminService.InterfPasswordChangeService;
 import org.framework.model.Blog;
 import org.framework.model.HeaderLink;
 import org.framework.select.FormSelect;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -49,6 +55,9 @@ private static final Logger logger = LoggerFactory.getLogger(AdminSideImplementa
    
    @Autowired
    private InterfFileUpload interfFileUpload;
+   
+   @Autowired
+   private InterfPasswordChangeService interfPasswordChangeService;
 	
 	@RequestMapping(value="/dashboard",method=RequestMethod.GET)
 	public String getLandingPage(Model model) {
@@ -183,7 +192,25 @@ private static final Logger logger = LoggerFactory.getLogger(AdminSideImplementa
 		 return new ModelAndView("redirect:/admin/fileUpload");
 	 }
 	 
+	 @GetMapping("/passwordChange")
 	 public ModelAndView passwordChange(Model model) {
 		 return new ModelAndView("passwordChange","passwordChange",new PasswordChange());
+	 }
+	 
+	 @PostMapping("/savePassworChange")
+	 public ModelAndView savePasswordChange(HttpServletRequest request, HttpServletResponse response ,
+			 @ModelAttribute("passwordChange") @Valid PasswordChange passwordChange ,  BindingResult result,
+			 final RedirectAttributes redirectAttributes,Model model) {
+		 if(result.hasErrors()) {
+			 return new ModelAndView("passwordChange","passwordChange",passwordChange);
+		 }
+		 String logname = SecurityContextHolder.getContext().getAuthentication().getName();
+		 interfPasswordChangeService.savePassword(passwordChange,logname);
+		 redirectAttributes.addFlashAttribute("successMessage", "Password Changed successfully");
+		 Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		 if(authentication != null) {
+			 new SecurityContextLogoutHandler().logout(request, response, authentication);
+		 }
+		 return new ModelAndView("redirect:/admin");
 	 }
 }

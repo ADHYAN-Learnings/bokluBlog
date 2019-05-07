@@ -37,6 +37,7 @@
                  <c:if test="${param.logout ne null}">
 	               <div style="color: blue"><h5>You have successfully logged out.</h5></div>
                  </c:if>
+	               <div style="color: blue"><h5>${successMessage}</h5></div>
                 <p class="form-group">By signing you are agreeing to our <a href="#">Terms of use</a> and our <a href="#">Privacy Policy</a>.</p>
               </form>
             </div>
