@@ -10,5 +10,7 @@ public interface HeaderSubSectionRepository extends JpaRepository<HeaderSubSecti
 	
 	@Query(" select hs from HeaderSubSection hs where hs.headerCategory.id = ?1 ")
 	List<HeaderSubSection> findByHeaderCategory(Long headerLinkId);
+	
+	List<HeaderSubSection> findByStatusEqualsOrderBySequenceAsc(String status);
 
 }

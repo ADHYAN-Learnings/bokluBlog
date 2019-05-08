@@ -11,8 +11,8 @@ import org.frameword.functionalInterface.AccessUsername;
 import org.framework.adminService.InterfBlogService;
 import org.framework.adminService.InterfCommentBean;
 import org.framework.adminService.InterfHeaderLink;
+import org.framework.adminService.InterfHeaderSubSection;
 import org.framework.email.PasswordResetEmail;
-import org.framework.model.Blog;
 import org.framework.model.CommentBean;
 import org.framework.model.Comments;
 import org.framework.model.HeaderLink;
@@ -80,13 +80,18 @@ public class UserSideImplementation {
 	
 	@Autowired
 	private InterfCommentBean interfCommentBeanService;
+	
+	@Autowired
+	private InterfHeaderSubSection interfHeaderSubSection;
 		
    @RequestMapping(value="/landingPage")
    public String getLandingPage(Model model) {
 	   logger.debug(":::::UserSideImplementation::::getLandingPage:");
 	   List<HeaderLink> headerLinkData = interfHeaderLink.getHeaderLinkOrderBySequence("Active");
+	   List<HeaderSubSection> headerSubSectionData = interfHeaderSubSection.getHeaderSubSectionByStatus("Active");
 	   model.addAttribute("username",accessUsername.getUsername());
 	   model.addAttribute("headerLinkData", headerLinkData);
+	   model.addAttribute("headerSubSectionLinkData", headerSubSectionData);
 	   return "boklu";
    }
 	
@@ -236,22 +241,6 @@ public class UserSideImplementation {
 	     interfPostCommentService.saveComments(comments);
 		 return  interfCommentBeanService.getCommentDetailsById(comments);
 	   }
-	
-	   
-	   @RequestMapping("/Spring Security/{subject}")
-	   public ModelAndView getStoreDetails(@PathVariable("subject") String subject , Model model) {
-		   logger.debug(":::::UserSideImplementation::::getStoreDetails::contentName::::"+subject);
-		   Blog blogDetails = interfBlogService.findByheaderSubject(subject);
-
-		   List<HeaderLink> headerLinkWithSequence = interfHeaderLink.getHeaderLinkOrderBySequence("Active");
-		    model.addAttribute("headerLinkWithSequence",headerLinkWithSequence); 
-		    model.addAttribute("postComment",new Comments());
-		    model.addAttribute("displayComments",interfPostCommentService.findByHeaderSubSectionOrderById(blogDetails.getHeaderSubject().getSubSectionId()));
-		   return new ModelAndView("boklu","blog",blogDetails);
-	   }
-   
-	  
-
 }
 
 

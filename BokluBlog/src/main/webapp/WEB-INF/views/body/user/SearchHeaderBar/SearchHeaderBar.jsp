@@ -7,18 +7,29 @@
 <div class="row">
  <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
  
-<nav class="navbar navbar-default">
-  <div class="container-fluid justify-content-end">
-     <sec:authorize var="isUser" access="hasRole('ROLE_USER')" />
-   
-    <ul class="nav navbar-nav">
-     <c:forEach var="headerLink" items="${headerLinkWithSequence }">
-       <li class="nav-item">
-        <a class="nav-link whiteText" href='<spring:url value="/${headerLink.category}"/>'><c:out value="${headerLink.category }"></c:out></a>
-       </li>
+ <nav class="navbar navbar-default">
+   <!-- Brand -->
+  <a class="navbar-brand whiteText"href="#">BOKLU</a> 
+    
+  <ul class="navbar-nav">
+  <c:forEach var="headerLink" items="${headerLinkWithSequence }">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle whiteText" href="#" id="navbardrop" data-toggle="dropdown">
+        <c:out value="${headerLink.category }"></c:out>
+      </a>
+      <div class="dropdown-menu">
+        <c:forEach var="headerLinkDependency" items="${headerSubSectionLinkData}">
+         <c:if test="${headerLink.id eq headerLinkDependency.headerCategory.id }">
+          <a class="dropdown-item" href="<spring:url value="/boklu/${headerLink.category}/${headerLinkDependency.subject}"/>">
+           <c:out value="${headerLinkDependency.subject}"></c:out>
+          </a>
+         </c:if>
+        </c:forEach>
+      </div>
+    </li>
      </c:forEach>
-      
-    <%-- This code is commented because for temporary reason we don't need user sign in  
+     
+    <!--   This code is commented because for temporary reason we don't need user sign in  
        <li class="dropdown">
         <a class="dropdown-toggle  whiteText" data-toggle="dropdown" href="#">
          <c:if test="${!isUser}">Sign In</c:if>
@@ -36,13 +47,10 @@
             <li style="text-decoration:underline;"><a class="dropdown-item link"  href="<spring:url value='/boklu/logout'/>"><small>Sign Out</small></a></li>
            </c:if>
         </ul>
-        </li> --%>
-    </ul>
+        </li> -->
+  </ul>
  
-  </div>
-</nav>
+</nav> 
  </div>
 </div>
-</nav>  
-
- 
+</nav>   

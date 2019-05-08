@@ -42,4 +42,10 @@ public class HeaderSubSectionService  implements InterfHeaderSubSection {
 		return headerSubSectionRepository.count();
 	}
 
+	@Override
+	public List<HeaderSubSection> getHeaderSubSectionByStatus(String status) {
+		return headerSubSectionRepository.findByStatusEqualsOrderBySequenceAsc(status);
+	}
+	
+
 }
