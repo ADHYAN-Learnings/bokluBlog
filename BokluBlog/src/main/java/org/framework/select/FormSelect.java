@@ -1,8 +1,12 @@
 package org.framework.select;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 
 import org.framework.adminService.InterfHeaderLink;
 import org.framework.adminService.InterfHeaderSubSection;
@@ -13,6 +17,15 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class FormSelect {
+	
+	private final static String UPLOAD_DIRECTORY = "/resources/images/";
+
+	HttpServletRequest request;
+	
+	public FormSelect(HttpServletRequest request) {
+		super();
+		this.request = request;
+	}
 	
 	@Autowired
 	private InterfHeaderLink interfHeaderLink;
@@ -51,6 +64,26 @@ public class FormSelect {
 		List<HeaderSubSection> headerSubjectData = interfHeaderSubSection.getHeaderSubSectionSubject(headerLinkId);
 		headerSubjectData.stream().forEach(headerSubSection->headerSubject.put(headerSubSection.getSubSectionId(), headerSubSection.getSubject()));
 		return headerSubject;
+	}
+	
+	public Map<String,String> getListOfImageFolder() {
+		Map<String,String> imageFolderList = new HashMap<String,String>();
+		
+		try {
+			ServletContext servletContext = request.getServletContext();
+			String directoryPath = servletContext.getRealPath(UPLOAD_DIRECTORY);
+			File directory = new File(directoryPath);
+			File[] fileList = directory.listFiles();
+			
+			for(File file: fileList) {
+				if(file.isDirectory()) {
+					imageFolderList.put(file.getName(), file.getName());
+				}
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return imageFolderList;
 	}
 	
 

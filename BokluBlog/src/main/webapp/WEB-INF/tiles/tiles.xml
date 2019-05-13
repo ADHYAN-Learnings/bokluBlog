@@ -53,6 +53,10 @@
         <put-attribute name="body" value="/WEB-INF/views/body/admin/fileUpload.jsp" />  
     </definition>
     
+    <definition name="fileUploadDirectory" extends="admin.definition">       
+        <put-attribute name="body" value="/WEB-INF/views/body/admin/fileUploadDirectory.jsp" />  
+    </definition>
+    
      <definition name="passwordChange" template="/WEB-INF/views/layout/loginLayout.jsp">       
         <put-attribute name="body" value="/WEB-INF/views/body/admin/PasswordChange/passwordChange.jsp" />    
     </definition>  

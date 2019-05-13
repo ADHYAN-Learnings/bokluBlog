@@ -1,5 +1,6 @@
 package org.framework.adminService;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -18,7 +19,7 @@ public class FileUploadService extends HttpServlet implements InterfFileUpload  
 	
 	private static final long serialVersionUID = 1L;
 
-	private final static String UPLOAD_DIRECTORY = "/resources/images/SpringSecurity/";
+	private final static String UPLOAD_DIRECTORY = "/resources/images/";
 
 	HttpServletRequest request;
 	
@@ -29,12 +30,12 @@ public class FileUploadService extends HttpServlet implements InterfFileUpload  
 	private static final Logger logger = LoggerFactory.getLogger(FileUploadService.class);
 
 
-	public StringBuilder fileUpload(MultipartFile[] files) {
+	public StringBuilder fileUpload(MultipartFile[] files,String imageFolder) {
 		logger.debug(":::FileUploadService:::::fileUpload::");
 		StringBuilder fileNames = new StringBuilder();
 		try {
 			ServletContext servletContext = request.getServletContext();
-			String directoryPath = servletContext.getRealPath(UPLOAD_DIRECTORY);
+			String directoryPath = servletContext.getRealPath(UPLOAD_DIRECTORY+imageFolder+"/");
 		
 			for(MultipartFile file: files) {
 			 Path fileNameAndPath = Paths.get(directoryPath,file.getOriginalFilename());
@@ -45,6 +46,20 @@ public class FileUploadService extends HttpServlet implements InterfFileUpload  
 		 e.printStackTrace();	
 		}
 		return fileNames;
+	}
+
+
+	@Override
+	public boolean createDirectory(String newDirectory) {
+		  boolean createDirectory = false;
+		try {
+			ServletContext servletContext = request.getServletContext();
+			String directoryPath = servletContext.getRealPath(UPLOAD_DIRECTORY)+newDirectory+"/";
+			createDirectory = new File(directoryPath).mkdir();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return createDirectory;
 	}	
 	
 

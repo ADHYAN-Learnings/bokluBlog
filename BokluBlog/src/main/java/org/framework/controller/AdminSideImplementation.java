@@ -175,18 +175,20 @@ private static final Logger logger = LoggerFactory.getLogger(AdminSideImplementa
 	 }
 	 
 	 @GetMapping("/fileUpload")
-	 public String fileUploadDisplayPage() {
+	 public String fileUploadDisplayPage(Model model) {
+		 model.addAttribute("imageFolderList", formSelect.getListOfImageFolder());
 		 return "fileUpload";
 	 }
 	 @PostMapping("/uploadFile")
-	 public ModelAndView saveFile(Model model,@RequestParam("files") MultipartFile[] files , RedirectAttributes redirectAttributes) {
+	 public ModelAndView saveFile(Model model,@RequestParam("files") MultipartFile[] files, @RequestParam("imageFolder") String imageFolder , 
+			 RedirectAttributes redirectAttributes) {
 		 logger.debug(":::AdminSideImplementation:::::saveFile");
 	     StringBuilder fileNames= new StringBuilder();
 		 if(files.length<=0) {
 			 redirectAttributes.addFlashAttribute("message", "Please Select a file to upload");
 			 return new ModelAndView("redirect:/admin/fileUpload");
 		 }
-		  fileNames =  interfFileUpload.fileUpload(files);
+		  fileNames =  interfFileUpload.fileUpload(files,imageFolder);
 		  redirectAttributes.addFlashAttribute("message","Files successfully uploaded "+fileNames);
 		  
 		 return new ModelAndView("redirect:/admin/fileUpload");
@@ -212,5 +214,27 @@ private static final Logger logger = LoggerFactory.getLogger(AdminSideImplementa
 			 new SecurityContextLogoutHandler().logout(request, response, authentication);
 		 }
 		 return new ModelAndView("redirect:/admin");
+	 }
+	 
+	 @GetMapping("/addFileUploadDirectory")
+	 public ModelAndView addFileUploadDirectory(Model model) {
+		 model.addAttribute("imageFolderList", formSelect.getListOfImageFolder());
+		 return new ModelAndView("fileUploadDirectory");
+	 }
+	 
+	 @PostMapping("/createDirectory")
+	 public ModelAndView addNewDirectory(Model model,@RequestParam("newDirectory") String newDirectory, final RedirectAttributes redirectAttributes) {
+		 if(newDirectory ==null || newDirectory =="") {
+			 model.addAttribute("imageFolderList", formSelect.getListOfImageFolder());
+			 return new ModelAndView("fileUploadDirectory","message","Please enter directory name");
+		 }
+		 boolean createDirectory =  interfFileUpload.createDirectory(newDirectory);
+		 
+		 if(createDirectory == false) {
+			 model.addAttribute("imageFolderList", formSelect.getListOfImageFolder());
+			 return new ModelAndView("fileUploadDirectory","message","Please Try Again. File did not uploaded successfully.");
+		 }
+		 model.addAttribute("imageFolderList", formSelect.getListOfImageFolder());
+		 return new ModelAndView("fileUpload","message","File uploaded successfully.");
 	 }
 }

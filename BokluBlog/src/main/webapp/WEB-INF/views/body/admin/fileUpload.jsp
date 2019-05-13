@@ -6,18 +6,37 @@
  <body>
    <div class="container-fluid margin-top-6">
      <div class="card">
-      <div class="card-header bg-info">File Upload</div>
+     <div class="card bg-info">
+       <div class="card-header">
+        <div class="row no-gutters">
+         <div class="col-sm-11 col-md-11 col-lg-11 col-xs-11"><span>File Upload</span></div>
+         <div class="col-sm-1 col-md-1 col-lg-1 col-xs-1">
+           <span><a href="<spring:url value='/admin/addFileUploadDirectory'/>"> <i class="fa fa-plus" aria-hidden="true"></i></a></span>
+         </div>
+       </div>
+       </div>
+     </div>
       <div class="card-body">
        <form:form method="POST" action="/admin/uploadFile" enctype="multipart/form-data" class="form-horizontal">
        <div class="row">
-        <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6">
+        <div class="col-sm-4 col-md-4 col-lg-4 col-xs-4">
          <div class="form-group">
            <input type="file" name="files" multiple>
          </div>
         </div>
-         <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6">
+        <div class="col-sm-4 col-md-4 col-lg-4 col-xs-4">
          <div class="form-group">
-            <input type="submit" value="submit">
+          <select name="imageFolder" class="form-control">
+          <c:forEach items="${imageFolderList}" var="imageFolderList">
+           <option value="${imageFolderList.key}">${imageFolderList.value}</option>
+          </c:forEach>
+          </select>
+         </div>
+        </div>
+        
+         <div class="col-sm-4 col-md-4 col-lg-4 col-xs-4">
+         <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="submit">
          </div>
         </div>
        </div>
