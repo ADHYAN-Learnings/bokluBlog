@@ -12,5 +12,6 @@ public interface HeaderSubSectionRepository extends JpaRepository<HeaderSubSecti
 	List<HeaderSubSection> findByHeaderCategory(Long headerLinkId);
 	
 	List<HeaderSubSection> findByStatusEqualsOrderBySequenceAsc(String status);
+	List<HeaderSubSection> findBySequence(int sequence);
 
 }

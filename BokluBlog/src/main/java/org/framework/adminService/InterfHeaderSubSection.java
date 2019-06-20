@@ -13,4 +13,5 @@ public interface InterfHeaderSubSection {
 	List<HeaderSubSection> getHeaderSubSectionSubject(Long headerLinkId);
 	Long getCount();
 	List<HeaderSubSection> getHeaderSubSectionByStatus(String status);
+	List<HeaderSubSection> getHeaderSubSectionBySequence(int sequence);
 }

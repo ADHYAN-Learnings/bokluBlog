@@ -44,15 +44,14 @@ public class LoginLogoutImpl {
 	
 	@RequestMapping(value="/boklu")
 	public String getStore(Model model) {
-	logger.debug(":::LoginLogoutImpl:::getStore:::");
-	/* Id '1' is given for temporary purpose once I will understand the aws and search engine. */
-	model.addAttribute("blog", interfBlogService.findByBlogId(Long.parseLong("1"))); 
+	logger.debug(":::LoginLogoutImpl:::getStore:::");	
 	List<HeaderLink> headerLinkWithSequence = interfHeaderLink.getHeaderLinkOrderBySequence("Active");
 	List<HeaderSubSection> headerSubSectionData = interfHeaderSubSection.getHeaderSubSectionByStatus("Active");
+	List<HeaderSubSection> headerSubSectionSubject = interfHeaderSubSection.getHeaderSubSectionBySequence(1);
     model.addAttribute("headerLinkWithSequence",headerLinkWithSequence); 
     model.addAttribute("headerSubSectionLinkData", headerSubSectionData);
-    model.addAttribute("postComment",new Comments());
-    model.addAttribute("displayComments",interfPostCommentService.findByHeaderSubSectionOrderById(Long.parseLong("1")));
+    model.addAttribute("headerFirstSubject",headerSubSectionSubject);
+    headerSubSectionSubject.forEach(sh->System.out.println(""+sh.getSubject()));
 		return "boklu";
 	}
 	
@@ -73,7 +72,7 @@ public class LoginLogoutImpl {
 		    model.addAttribute("headerSubSectionLinkData", headerSubSectionData);
 		    model.addAttribute("postComment",new Comments());
 		    model.addAttribute("displayComments",interfPostCommentService.findByHeaderSubSectionOrderById(blogDetails.getHeaderSubject().getSubSectionId()));
-		   return new ModelAndView("boklu","blog",blogDetails);
+		   return new ModelAndView("bokluTutorials","blog",blogDetails);
 	   }
   
 }

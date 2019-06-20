@@ -46,6 +46,11 @@ public class HeaderSubSectionService  implements InterfHeaderSubSection {
 	public List<HeaderSubSection> getHeaderSubSectionByStatus(String status) {
 		return headerSubSectionRepository.findByStatusEqualsOrderBySequenceAsc(status);
 	}
+
+	@Override
+	public List<HeaderSubSection> getHeaderSubSectionBySequence(int sequence) {
+		return headerSubSectionRepository.findBySequence(sequence);
+	}
 	
 
 }

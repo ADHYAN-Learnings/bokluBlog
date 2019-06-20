@@ -79,9 +79,13 @@
   </definition>
   
   
-  <definition name="boklu" extends="userPage.definition">       
+  <definition name="boklu" extends="user.definition">       
         <put-attribute name="body" value="/WEB-INF/views/body/user/body/boklu.jsp" />    
-    </definition>  
+    </definition>
+    
+    <definition name="bokluTutorials" extends="userPage.definition">       
+        <put-attribute name="body" value="/WEB-INF/views/body/user/body/bokluTutorials.jsp" />    
+    </definition>   
     
       <definition name="userLogin" template="/WEB-INF/views/layout/loginLayout.jsp">       
         <put-attribute name="body" value="/WEB-INF/views/Login/userLogin.jsp" />    

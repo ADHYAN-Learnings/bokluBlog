@@ -17,7 +17,7 @@
       <a class="nav-link dropdown-toggle whiteText" href="#" id="navbardrop" data-toggle="dropdown">
         <c:out value="${headerLink.category }"></c:out>
       </a>
-      <div class="dropdown-menu">
+      <div class="dropdown-menu dropdown-menu-right">
         <c:forEach var="headerLinkDependency" items="${headerSubSectionLinkData}">
          <c:if test="${headerLink.id eq headerLinkDependency.headerCategory.id }">
           <a class="dropdown-item" href="<spring:url value="/boklu/${headerLink.category}/${headerLinkDependency.subject}"/>">
