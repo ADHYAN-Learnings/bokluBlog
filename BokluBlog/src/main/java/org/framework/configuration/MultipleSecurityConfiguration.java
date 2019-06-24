@@ -86,7 +86,7 @@ public class MultipleSecurityConfiguration {
 			    .antMatchers("/boklu","/boklu/signup","/boklu/register","/boklu/registrationConfirmation",
 			    		"/boklu/forgotPassword","/boklu/passwordReset",
 			    		"/boklu/resetChangePassword","/boklu/savePasswordReset",
-			    		"/boklu/Spring Security/**","/boklu/Java 8/**","/boklu/saveComment").permitAll()
+			    		"/boklu/saveComment","/boklu/**").permitAll()
 			    .anyRequest().hasRole("USER")
 			 
 			    .and()

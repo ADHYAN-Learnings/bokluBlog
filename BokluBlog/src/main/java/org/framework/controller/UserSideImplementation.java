@@ -87,11 +87,14 @@ public class UserSideImplementation {
    @RequestMapping(value="/landingPage")
    public String getLandingPage(Model model) {
 	   logger.debug(":::::UserSideImplementation::::getLandingPage:");
-	   List<HeaderLink> headerLinkData = interfHeaderLink.getHeaderLinkOrderBySequence("Active");
-	   List<HeaderSubSection> headerSubSectionData = interfHeaderSubSection.getHeaderSubSectionByStatus("Active");
 	   model.addAttribute("username",accessUsername.getUsername());
-	   model.addAttribute("headerLinkData", headerLinkData);
-	   model.addAttribute("headerSubSectionLinkData", headerSubSectionData);
+		List<HeaderLink> headerLinkWithSequence = interfHeaderLink.getHeaderLinkOrderBySequence("Active");
+		List<HeaderSubSection> headerSubSectionData = interfHeaderSubSection.getHeaderSubSectionByStatus("Active");
+		List<HeaderSubSection> headerSubSectionSubject = interfHeaderSubSection.getHeaderSubSectionBySequence(1);
+	    model.addAttribute("headerLinkWithSequence",headerLinkWithSequence); 
+	    model.addAttribute("headerSubSectionLinkData", headerSubSectionData);
+	    model.addAttribute("headerFirstSubject",headerSubSectionSubject);
+	 
 	   return "boklu";
    }
 	

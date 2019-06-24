@@ -5,6 +5,11 @@
 <html>
   <head>
     <title>Sign In</title>
+    <script type="text/javascript">
+      $(document).ready(function(){
+    	  ParFw.togglePassword();
+      });
+    </script> 
   </head>
   <body>
 <div class="container">

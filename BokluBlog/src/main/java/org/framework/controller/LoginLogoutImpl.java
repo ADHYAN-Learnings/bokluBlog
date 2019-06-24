@@ -51,7 +51,6 @@ public class LoginLogoutImpl {
     model.addAttribute("headerLinkWithSequence",headerLinkWithSequence); 
     model.addAttribute("headerSubSectionLinkData", headerSubSectionData);
     model.addAttribute("headerFirstSubject",headerSubSectionSubject);
-    headerSubSectionSubject.forEach(sh->System.out.println(""+sh.getSubject()));
 		return "boklu";
 	}
 	

@@ -3,7 +3,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
  <nav class=" navbar-expand-sm  fixed-top headerlength headerColor"> 
-
+<sec:authorize var="isUser" access="hasRole('ROLE_USER')" />
 <div class="row">
  <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
  
@@ -29,7 +29,6 @@
     </li>
      </c:forEach>
      
-    <!--   This code is commented because for temporary reason we don't need user sign in  
        <li class="dropdown">
         <a class="dropdown-toggle  whiteText" data-toggle="dropdown" href="#">
          <c:if test="${!isUser}">Sign In</c:if>
@@ -47,7 +46,7 @@
             <li style="text-decoration:underline;"><a class="dropdown-item link"  href="<spring:url value='/boklu/logout'/>"><small>Sign Out</small></a></li>
            </c:if>
         </ul>
-        </li> -->
+        </li> 
   </ul>
  
 </nav> 
